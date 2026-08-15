@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Falach — Product Designer",
-  description: "Portfolio of Falach, a product designer based in Indonesia.",
+  metadataBase: new URL("https://falachns.web.id"),
+  title: "Falachns, Product Designer",
+  description: "Building products into usable digital experiences.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
