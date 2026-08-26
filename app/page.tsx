@@ -3,7 +3,6 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 const projects = [
   {
-    number: "01",
     eyebrow: "Qiscus · Customer experience",
     title: "Elevating CSAT survey experience for better agent performance.",
     summary:
@@ -11,10 +10,11 @@ const projects = [
     tags: ["Survey Builder", "Micro-interaction", "Competitive Analysis"],
     image:
       "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=2048&width=2100&height=1575",
+    imageWidth: 2100,
+    imageHeight: 1575,
     tone: "blue",
   },
   {
-    number: "02",
     eyebrow: "Commerce · Conversion",
     title: "Redesigning a customer microsite for higher merchant conversion.",
     summary:
@@ -22,13 +22,15 @@ const projects = [
     tags: ["E-commerce", "Mobile Web App", "Design System"],
     image:
       "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?width=2048&height=1640",
+    imageWidth: 2048,
+    imageHeight: 1640,
     tone: "sand",
   },
 ];
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="site-header wrap">
         <a className="wordmark" href="#top" aria-label="Back to top">
@@ -40,7 +42,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="hero wrap" id="main-content" aria-labelledby="intro-title">
+      <section className="hero wrap" id="top" aria-labelledby="intro-title">
         <div className="hero-intro">
           <p className="hero-name">Falach</p>
           <h1 id="intro-title">Good day! I&apos;m Falach, Product Designer building products into usable digital experiences.</h1>
@@ -54,14 +56,14 @@ export default function Home() {
       <section className="work wrap" id="work">
         <div className="project-list">
           {projects.map((project) => (
-            <article className={`project project-${project.tone}`} key={project.number}>
+              <article className={`project project-${project.tone}`} key={project.eyebrow}>
               <a href="#contact" className="project-link" aria-label={`View ${project.title}`}>
                 <div className="project-media">
-                  <img src={project.image} alt={`${project.title} interface preview`} loading="lazy" decoding="async" />
+                  <img src={project.image} alt={`${project.title} interface preview`} width={project.imageWidth} height={project.imageHeight} loading="lazy" decoding="async" />
                   <span className="project-view">View case study <HugeiconsIcon icon={ArrowUpRight01Icon} size={13} strokeWidth={1.7} aria-hidden="true" /></span>
                 </div>
                 <div className="project-info">
-                  <div className="project-index"><span>{project.number}</span><span>{project.eyebrow}</span></div>
+                  <div className="project-index"><span>{project.eyebrow}</span></div>
                   <h2>{project.title}</h2>
                   <p>{project.summary}</p>
                   <ul aria-label="Project focus areas">
