@@ -29,7 +29,7 @@ const projects = [
 export default function Home() {
   return (
     <main>
-      <div className="grain" aria-hidden="true" />
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="site-header wrap">
         <a className="wordmark" href="#top" aria-label="Back to top">
           Falachns
@@ -40,10 +40,10 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="hero wrap" id="top">
+      <section className="hero wrap" id="main-content" aria-labelledby="intro-title">
         <div className="hero-intro">
           <p className="hero-name">Falach</p>
-          <h1>Good day! I&apos;m Falach, Product Designer building products into usable digital experiences.</h1>
+          <h1 id="intro-title">Good day! I&apos;m Falach, Product Designer building products into usable digital experiences.</h1>
         </div>
         <div className="hero-foot">
           <p>Currently helping businesses stay connected with their customers at <strong>Qiscus</strong>.</p>
@@ -57,8 +57,8 @@ export default function Home() {
             <article className={`project project-${project.tone}`} key={project.number}>
               <a href="#contact" className="project-link" aria-label={`View ${project.title}`}>
                 <div className="project-media">
-                  <img src={project.image} alt="Product interface preview" />
-                  <span className="project-view">View case study <HugeiconsIcon icon={ArrowUpRight01Icon} size={13} strokeWidth={1.7} /></span>
+                  <img src={project.image} alt={`${project.title} interface preview`} loading="lazy" decoding="async" />
+                  <span className="project-view">View case study <HugeiconsIcon icon={ArrowUpRight01Icon} size={13} strokeWidth={1.7} aria-hidden="true" /></span>
                 </div>
                 <div className="project-info">
                   <div className="project-index"><span>{project.number}</span><span>{project.eyebrow}</span></div>
@@ -77,8 +77,7 @@ export default function Home() {
       <section className="notes wrap">
         <div className="notes-grid">
           <div className="note-links">
-            <a href="https://falachns.framer.website/playground" target="_blank" rel="noreferrer">Playground <span>↗</span></a>
-            <a href="https://falachns.framer.website/explorations" target="_blank" rel="noreferrer">Explorations <span>↗</span></a>
+            <a href="https://falachns.framer.website/explorations" target="_blank" rel="noreferrer">Explorations <HugeiconsIcon icon={ArrowUpRight01Icon} size={15} strokeWidth={1.6} aria-hidden="true" /></a>
           </div>
         </div>
       </section>
@@ -86,7 +85,7 @@ export default function Home() {
       <footer className="footer wrap" id="contact">
         <div className="contact-row">
           <a className="email" href="mailto:falachns10@gmail.com">
-            falachns10@gmail.com <HugeiconsIcon icon={ArrowUpRight01Icon} size={27} strokeWidth={1.5} />
+            falachns10@gmail.com <HugeiconsIcon icon={ArrowUpRight01Icon} size={27} strokeWidth={1.5} aria-hidden="true" />
           </a>
           <div className="socials">
             <a href="https://www.linkedin.com/in/falachnoorsyahid/" target="_blank" rel="noreferrer">LinkedIn</a>
