@@ -1,55 +1,112 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MediaViewer from "@/components/MediaViewer";
 
 export const metadata: Metadata = {
-  title: "Design Works & Explorations — Falachns",
-  description: "Creative UI/UX design experiments, interaction prototypes, and visual systems by Falach Noor Syahid.",
+  title: "Explorations — Falachns",
+  description: "Visual archive of interaction prototypes, motion studies, and interface design experiments by Falach Noor Syahid.",
   alternates: {
     canonical: "/explorations",
   },
 };
 
-const EXPLORATION_ITEMS = [
+const EXPLORATION_MEDIA = [
+  // 1. Focus Pomodoro Interactive Item
   {
-    title: "Focus Pomodoro Interface & Dark Mode Ergonomics",
-    caption: "Minimalist timer surface optimized for visual serenity and deep concentration.",
+    type: "pomodoro-link" as const,
+    url: "https://focus-pomodoro.figma.site/",
     video: "https://framerusercontent.com/assets/d1g0Txzj2AYZxCtpk5MOqzOlZ3g.mp4",
-    poster: "https://framerusercontent.com/images/hid2aXaIO0nS85UlbzxXgVXenE.png?width=2048",
-    tag: "INTERACTIVE LAB",
+    caption: "Focus Pomodoro Timer ↗",
+  },
+  // 2. Interaction dynamics video
+  {
+    type: "video" as const,
+    src: "https://framerusercontent.com/assets/k3zM7tkCAle8MCUntBKNDfT1k.mp4",
+  },
+  // 3. Design system & UI explorations images
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png",
+    alt: "E-commerce customer microsite and product variant layout",
+    width: 2048,
+    height: 1640,
   },
   {
-    title: "Mobile Interaction & Tactile Physics",
-    caption: "High-density touch targets, fluid spring physics, and intuitive bottom navigation.",
-    video: "https://framerusercontent.com/assets/k4s8yStUsLN4Qebk233ITGV1HFA.mp4",
-    poster: "https://framerusercontent.com/images/6NpLiiKLI5uEBIGCdoJsGKtSYuk.png?width=2048",
-    tag: "MOTION PROTOTYPE",
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/hid2aXaIO0nS85UlbzxXgVXenE.png",
+    alt: "Focus Pomodoro timer surface in calm dark mode",
+    width: 2048,
+    height: 1536,
   },
   {
-    title: "Product Workflow & State Transitions",
-    caption: "Seamless step transitions and real-time state feedback for enterprise workflows.",
-    video: "https://framerusercontent.com/assets/k3zM7tkCAle8MCUntBKNDfT1k.mp4",
-    poster: "https://framerusercontent.com/images/6FDPE9O0WC3nwLC5YnYNJD2cBvg.png?width=2048",
-    tag: "PRODUCT PROTOTYPE",
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/GICwTFgsnfLjZXszkuwLhxZnuEY.png",
+    alt: "Typography scale and responsive layout tokens",
+    width: 3371,
+    height: 2107,
   },
   {
-    title: "Typography & Responsive Grid System",
-    caption: "Micro-typographic scale pairing clean utility sans-serif with editorial contrast.",
-    image: "https://framerusercontent.com/images/GICwTFgsnfLjZXszkuwLhxZnuEY.png?width=3371",
-    tag: "DESIGN SYSTEM",
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/6NpLiiKLI5uEBIGCdoJsGKtSYuk.png",
+    alt: "Mobile interaction interface exploration with tactile ergonomics",
+    width: 2048,
+    height: 1536,
   },
   {
-    title: "Component Ergonomics & Surface Tokens",
-    caption: "Hairline borders, elevation-free card layers, and neutral-ink hierarchy.",
-    image: "https://framerusercontent.com/images/urhFFkMoogSQO8w3dkO1fjbrbrg.png?width=3072",
-    tag: "SURFACE ARCHITECTURE",
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/qQc7WUoyINHdIlhFOMXDwNkZY.png",
+    alt: "Product design system component patterns and tokens",
+    width: 2048,
+    height: 1536,
+  },
+  // 4. Video micro-flow loop
+  {
+    type: "video" as const,
+    src: "https://framerusercontent.com/assets/k4s8yStUsLN4Qebk233ITGV1HFA.mp4",
+  },
+  // 5. Visual archive layout shots
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/BlnMUGhj3Oz7EpDsV2dcYdhvgmc.png",
+    alt: "Visual design exploration layout shot",
+    width: 2048,
+    height: 1536,
   },
   {
-    title: "Multi-Platform Layout Architecture",
-    caption: "Responsive density scaling across mobile, tablet, and desktop breakpoints.",
-    image: "https://framerusercontent.com/images/aRFHIOdNQxul8cfmfAHnh3mldo.png?width=4096",
-    tag: "LAYOUT EXPLORATION",
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/1msSV1xFrqoPHjmxQNsLVfbLA.png",
+    alt: "Interface prototype screen details",
+    width: 2048,
+    height: 1536,
+  },
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/urhFFkMoogSQO8w3dkO1fjbrbrg.png",
+    alt: "Surface architecture and micro-typography layout",
+    width: 3072,
+    height: 1920,
+  },
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/aRFHIOdNQxul8cfmfAHnh3mldo.png",
+    alt: "Multi-platform responsive breakpoint explorations",
+    width: 4096,
+    height: 2560,
+  },
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/jBQroMlfYBz6JaJ8vVFhZJwuNt4.png",
+    alt: "Interactive visual design experiment view",
+    width: 2048,
+    height: 1536,
+  },
+  {
+    type: "image" as const,
+    src: "https://framerusercontent.com/images/6FDPE9O0WC3nwLC5YnYNJD2cBvg.png",
+    alt: "Product workflow and state transitions prototype",
+    width: 2048,
+    height: 1536,
   },
 ];
 
@@ -63,35 +120,69 @@ export default function ExplorationsPage() {
       <Header />
 
       <main id="main-content">
-        <article className="subpage-container wrap" id="explorations-content">
-          <header className="subpage-header">
-            <h1 className="subpage-title">Explorations</h1>
-          </header>
+        {/* Pure Framer-fidelity explorations grid: no visible title, mounting directly under header */}
+        <h1 className="sr-only">Explorations</h1>
+        <div className="wrap pt-28 pb-20">
+          <section aria-label="Explorations visual gallery" className="flex flex-col space-y-6 sm:space-y-8">
+            {EXPLORATION_MEDIA.map((item, idx) => {
+              if (item.type === "pomodoro-link") {
+                return (
+                  <figure key={`pomodoro-${idx}`} className="m-0">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group"
+                      aria-label="Open Focus Pomodoro Timer preview"
+                    >
+                      <video
+                        src={item.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60 group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors"
+                      />
+                      <figcaption className="mt-2 text-xs font-mono text-[var(--muted)] group-hover:text-[var(--ink)] transition-colors">
+                        {item.caption}
+                      </figcaption>
+                    </a>
+                  </figure>
+                );
+              }
 
-          {/* Pure Gallery Visuals */}
-          <section aria-label="Visual design archive">
-            <div className="flex flex-col gap-12">
-              {EXPLORATION_ITEMS.map((item) => (
-                <figure key={item.title} className="flex flex-col gap-3">
-                  <MediaViewer
-                    video={item.video}
-                    videoPoster={item.poster}
-                    image={item.image}
-                    alt={item.title}
-                    aspectRatio="16 / 10"
+              if (item.type === "video") {
+                return (
+                  <figure key={`video-${idx}`} className="m-0">
+                    <video
+                      src={item.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="w-full rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60"
+                    />
+                  </figure>
+                );
+              }
+
+              return (
+                <figure key={`image-${idx}`} className="m-0">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    sizes="(max-width: 680px) 100vw, 680px"
+                    className="w-full h-auto rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60"
                   />
-                  <figcaption className="flex flex-col gap-1">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-sm font-medium text-[var(--ink)] m-0">{item.title}</h2>
-                      <span className="tag-mono">{item.tag}</span>
-                    </div>
-                    <p className="text-[13px] text-[var(--subtle)] m-0 leading-relaxed">{item.caption}</p>
-                  </figcaption>
                 </figure>
-              ))}
-            </div>
+              );
+            })}
           </section>
-        </article>
+        </div>
       </main>
 
       <Footer />
