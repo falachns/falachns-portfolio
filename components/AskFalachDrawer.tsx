@@ -176,6 +176,23 @@ export default function AskFalachDrawer() {
     }, 450);
   };
 
+  const handleReset = () => {
+    setMessages([
+      {
+        id: "welcome-reset-" + Date.now(),
+        sender: "falach",
+        text: "Conversation reset. Feel free to ask about Falach's design projects, metrics, or select a suggested prompt below.",
+        timestamp: "Just now",
+        links: [
+          { label: "Qiscus CSAT", url: "/work/qiscus-csat" },
+          { label: "Commerce Microsite", url: "/work/customer-microsite" },
+        ],
+      },
+    ]);
+    setInputQuery("");
+    setIsTyping(false);
+  };
+
   return (
     <>
       {/* Backdrop overlay */}
@@ -199,15 +216,28 @@ export default function AskFalachDrawer() {
             <h3 className="drawer-title">FalachLLM</h3>
             <span className="drawer-badge">AI Assistant</span>
           </div>
-          <button
-            type="button"
-            className="drawer-close-btn"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close assistant drawer"
-            title="Close (Esc)"
-          >
-            <HugeiconsIcon icon={Cancel01Icon} size={15} strokeWidth={2} aria-hidden="true" />
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            {messages.length > 1 && (
+              <button
+                type="button"
+                onClick={handleReset}
+                className="drawer-reset-btn"
+                aria-label="Reset conversation"
+                title="Reset conversation"
+              >
+                Reset
+              </button>
+            )}
+            <button
+              type="button"
+              className="drawer-close-btn"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close assistant drawer"
+              title="Close (Esc)"
+            >
+              <HugeiconsIcon icon={Cancel01Icon} size={15} strokeWidth={2} aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         {/* Body */}

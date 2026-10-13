@@ -7,7 +7,6 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -15,7 +14,7 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
   variable: "--font-instrument",
   weight: "400",
-  style: ["normal", "italic"],
+  style: "italic",
 });
 
 export const viewport: Viewport = {
@@ -127,6 +126,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://framerusercontent.com" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -1,11 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LiveClock from "./LiveClock";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const email = "falachns10@gmail.com";
+
+  useEffect(() => {
+    // Read active theme from DOM attribute or fallback to light
+    const active = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    setTheme(active);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    try {
+      localStorage.setItem("theme", nextTheme);
+    } catch {
+      // Ignore local storage errors
+    }
+  };
 
   const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -73,7 +91,20 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom-row">
-        <LiveClock />
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+          <LiveClock />
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="theme-toggle-btn"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title="Toggle theme (Light / Dark)"
+          >
+            <span className="dot" aria-hidden="true" />
+            <span>Theme: {theme === "dark" ? "Dark" : "Light"}</span>
+          </button>
+        </div>
 
         <button
           onClick={scrollToTop}

@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import MediaViewer from "@/components/MediaViewer";
 
 export const metadata: Metadata = {
-  title: "Playground & Honors — Falachns",
+  title: "Playground — Falachns",
   description: "Personal design philosophy, honors, and milestone recognitions by Falach Noor Syahid.",
   alternates: {
     canonical: "/playground",
@@ -55,13 +55,19 @@ export default function PlaygroundPage() {
       <main id="main-content">
         <article className="wrap subpage-container" id="playground-content">
           <header className="subpage-header">
-            <h1 className="subpage-title">Playground & Recognitions</h1>
+            <div className="section-label-quiet">JOURNEY / PLAYGROUND</div>
+            <h1 className="subpage-title">Crafting every single pixel 🎨</h1>
             <p className="subpage-lead">
-              A collection of honors, design competitions, and milestones reflecting my journey in product design and incubation.
+              I’m a curious designer who loves building products that are genuinely useful for everyone. For me, design is a dialogue between users, designers, and developers where strategy and craft work together to create something that feels effortless. Subtle, but with great impact.
             </p>
           </header>
 
           <section className="honors-list" aria-label="Honors and awards">
+            <div className="section-header" style={{ marginBottom: "20px" }}>
+              <h2 className="section-title">Milestones & Recognitions</h2>
+              <span className="section-sublabel">2023 — 2024</span>
+            </div>
+
             {RECOGNITIONS.map((item) => (
               <div className="honor-item" key={item.title}>
                 <div className="honor-top">

@@ -1,5 +1,6 @@
-:root {
-  /* Strict Neutral Palette (Zero Yellow / Zero Amber / Zero Lime) */
+:root,
+[data-theme="light"] {
+  /* Strict Neutral Palette (Zero Yellow / Zero Amber / Zero Lime) - Default Light Mode */
   --page: #fafafa;
   --page-alt: #ffffff;
   --card: #f4f4f5;
@@ -24,26 +25,29 @@
 
   /* Layout Width: Strictly 680px - 700px max */
   --content-max-width: 680px;
+
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #09090b;
-    --page-alt: #0d0d10;
-    --card: #18181b;
-    --card-hover: #222226;
-    --ink: #fafafa;
-    --muted: #a1a1aa;
-    --subtle: #71717a;
-    --faint: #52525b;
-    --line: #27272a;
-    --line-subtle: rgba(255, 255, 255, 0.08);
-    --selection: #27272a;
-    --accent-ink: #fafafa;
+[data-theme="dark"] {
+  /* Dark Mode: High Contrast WCAG AA Compliant */
+  --page: #09090b;
+  --page-alt: #0d0d10;
+  --card: #18181b;
+  --card-hover: #222226;
+  --ink: #f4f4f5;
+  --muted: #a1a1aa;
+  --subtle: #71717a;
+  --faint: #52525b;
+  --line: #27272a;
+  --line-subtle: rgba(255, 255, 255, 0.08);
+  --selection: #27272a;
+  --accent-ink: #f4f4f5;
 
-    --drawer-bg: #121215;
-    --drawer-backdrop: rgba(0, 0, 0, 0.7);
-  }
+  --drawer-bg: #0f0f12;
+  --drawer-backdrop: rgba(0, 0, 0, 0.75);
+
+  color-scheme: dark;
 }
 
 * {
@@ -979,6 +983,24 @@ button {
   border: 1px solid var(--line);
 }
 
+.drawer-reset-btn {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  color: var(--subtle);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.drawer-reset-btn:hover {
+  color: var(--ink);
+  border-color: var(--subtle);
+  background: var(--card);
+}
+
 .drawer-close-btn {
   color: var(--muted);
   display: inline-flex;
@@ -1226,6 +1248,36 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--subtle);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--ink);
+  border-color: var(--subtle);
+  background: var(--card);
+}
+
+.theme-toggle-btn .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: inline-block;
 }
 
 .footer-back-to-top {

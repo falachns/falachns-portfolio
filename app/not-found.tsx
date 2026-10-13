@@ -16,21 +16,22 @@ export default function NotFound() {
       <article className="subpage-container wrap" id="not-found-content">
         <div className="py-24 flex flex-col items-start gap-4">
           <span className="font-mono text-xs uppercase tracking-wider text-[var(--faint)]">
-            404 / NOT FOUND
+            404 / UNDER CONSTRUCTION
           </span>
           <h1 className="text-xl sm:text-2xl font-normal text-[var(--ink)] m-0">
-            This page does not exist or has moved.
+            This page is under construction
           </h1>
-          <p className="text-sm text-[var(--muted)] leading-relaxed m-0 max-w-md">
-            The link you followed might be broken, or the page may have been restructured during our minimalist redesign.
+          <p className="text-sm font-editorial italic text-[var(--muted)] leading-relaxed m-0 max-w-md" style={{ fontSize: "16px" }}>
+            Still polishing things up here. Check back soon!
           </p>
           <div className="pt-4">
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--muted)] transition-colors border-b border-[var(--ink)] pb-0.5"
+              aria-label="Return to home page"
             >
               <HugeiconsIcon icon={ArrowLeft01Icon} size={15} strokeWidth={2} aria-hidden="true" />
-              <span>Return to Index</span>
+              <span>Take Me Home</span>
             </Link>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { getAllProjects } from "@/data/projects";
+import { getFeaturedProjects } from "@/data/projects";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MediaViewer from "@/components/MediaViewer";
 
 export default function Home() {
-  const projects = getAllProjects();
+  const projects = getFeaturedProjects();
 
   return (
     <div className="site-wrapper">
@@ -17,14 +17,14 @@ export default function Home() {
       <Header />
 
       <main id="main-content">
-        {/* Subdued Editorial Hero */}
+        {/* Authentic Editorial Hero (Purified of Hallucinated Fluff) */}
         <section className="hero wrap" aria-labelledby="hero-title">
           <div className="hero-intro">
             <h1 id="hero-title" className="hero-headline">
-              Good day! I&apos;m Falach, a product designer building software into usable, meaningful digital experiences.
+              Good day! I&apos;m Falach, junior product designer. Crafting for every single pixel.
             </h1>
             <p className="hero-body">
-              Focused on enterprise UX systems, conversion ergonomics, and bridging the gap between product strategy and engineering craft.
+              Product Designer building products into usable, meaningful digital experiences.
             </p>
             <a
               href="https://www.qiscus.com/en/about-us"
@@ -41,11 +41,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Selected Work Section (Quiet, Centered, No Overdesigned Frames) */}
+        {/* Selected Work Section (Strictly the 2 Featured Case Studies) */}
         <section className="wrap section-spacer" id="work" aria-label="Selected works">
           <div className="section-header">
             <h2 className="section-title">Selected Work</h2>
-            <span className="section-sublabel">2023 — 2026</span>
+            <span className="section-sublabel">2024 — 2026</span>
           </div>
 
           <div className="projects-container">
@@ -98,7 +98,7 @@ export default function Home() {
                 {project.bullets && project.bullets.length > 0 && (
                   <ul className="project-bullets-subdued" aria-label="Key highlights">
                     {project.bullets.map((b) => (
-                      <li key={b}>{b.replace(/^✦\s*/, "")}</li>
+                      <li key={b}>{b.replace(/^[✦✧]\s*/, "")}</li>
                     ))}
                   </ul>
                 )}
@@ -116,18 +116,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Labs & Explorations Quick Note */}
-        <section className="wrap section-spacer" aria-label="Explorations note">
+        {/* Labs & Explorations Archive Strip */}
+        <section className="wrap section-spacer" aria-label="Explorations and archive">
           <div className="section-header">
             <h2 className="section-title">Labs & Notes</h2>
-            <span className="section-sublabel">Experiments</span>
+            <span className="section-sublabel">Experiments & Archive</span>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
             <p className="project-desc">
-              Curious explorations, Pomodoro focus spaces, and milestone archives.
+              Curious explorations, Pomodoro focus spaces, and startup incubation projects.
             </p>
-            <div style={{ display: "flex", gap: "16px", fontSize: "13px" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", fontSize: "13px" }}>
               <Link
                 href="/explorations"
                 style={{
@@ -136,7 +136,7 @@ export default function Home() {
                   textUnderlineOffset: "3px",
                 }}
               >
-                Focus Pomodoro Timer ↗
+                Focus Pomodoro Timer & Gallery ↗
               </Link>
               <Link
                 href="/playground"
@@ -146,14 +146,34 @@ export default function Home() {
                   textUnderlineOffset: "3px",
                 }}
               >
-                Honors & Playground ↗
+                Honors & Recognitions ↗
+              </Link>
+              <Link
+                href="/work/habitz"
+                style={{
+                  color: "var(--muted)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
+                Habitz App (UNS Hub) ↗
+              </Link>
+              <Link
+                href="/work/artverse"
+                style={{
+                  color: "var(--muted)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
+                Artverse Commerce ↗
               </Link>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Minimal Footer */}
+      {/* Minimal Footer with Theme Toggle */}
       <Footer />
     </div>
   );
