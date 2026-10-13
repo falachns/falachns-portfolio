@@ -7,7 +7,6 @@ import {
   Cancel01Icon,
   SentIcon,
   SparklesIcon,
-  RotateLeft01Icon,
 } from "@hugeicons/core-free-icons";
 import {
   LLMMessage,
@@ -235,12 +234,20 @@ export default function AskFalachDrawer() {
                 aria-label="Reset conversation"
                 title="Reset conversation"
               >
-                <HugeiconsIcon
-                  icon={RotateLeft01Icon}
-                  size={14}
-                  strokeWidth={2}
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   aria-hidden="true"
-                />
+                >
+                  <path d="M21 7v6h-6" />
+                  <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+                </svg>
               </button>
             )}
             <button
@@ -315,14 +322,17 @@ export default function AskFalachDrawer() {
 
         {/* Footer with Suggested Prompts (when empty) + Input + Micro-Disclaimer */}
         <div className="drawer-footer">
-          {/* Suggested Prompts docked right above input field (hidden once chat starts) */}
+          {/* Suggested Prompts stacked cards docked right above input field (hidden once chat starts) */}
           {messages.length === 0 && (
-            <div className="drawer-prompts-bar" aria-label="Suggested prompts">
+            <div
+              className="flex flex-col gap-2 w-full mb-3"
+              aria-label="Suggested prompts"
+            >
               {PRESET_PROMPTS.map((prompt) => (
                 <button
                   key={prompt}
                   type="button"
-                  className="drawer-prompt-pill"
+                  className="w-full text-left py-2.5 px-3.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-800 rounded-xl bg-[var(--card)] hover:border-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                   onClick={() => handleSend(prompt)}
                 >
                   {prompt}
@@ -364,9 +374,8 @@ export default function AskFalachDrawer() {
           </form>
 
           {/* Micro-disclaimer directly below the chat input */}
-          <p className="drawer-disclaimer">
-            FalachLLM is an AI counterpart and can make mistakes. For official
-            inquiries:{" "}
+          <p className="drawer-disclaimer whitespace-nowrap">
+            FalachLLM can make mistakes · Reach out:{" "}
             <a
               href="mailto:falachns10@gmail.com"
               className="underline hover:text-[var(--ink)] transition-colors"

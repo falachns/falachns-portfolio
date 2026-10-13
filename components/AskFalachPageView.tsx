@@ -8,7 +8,6 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowUpRight01Icon,
   SentIcon,
-  RotateLeft01Icon,
 } from "@hugeicons/core-free-icons";
 import {
   LLMMessage,
@@ -102,12 +101,20 @@ export default function AskFalachPageView() {
                   aria-label="Reset conversation"
                   title="Reset conversation"
                 >
-                  <HugeiconsIcon
-                    icon={RotateLeft01Icon}
-                    size={15}
-                    strokeWidth={2}
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     aria-hidden="true"
-                  />
+                  >
+                    <path d="M21 7v6h-6" />
+                    <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+                  </svg>
                 </button>
               )}
             </div>
@@ -206,14 +213,14 @@ export default function AskFalachPageView() {
             <div className="pt-4 border-t border-[var(--line)] mt-4">
               {messages.length === 0 && (
                 <div
-                  className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-3"
+                  className="flex flex-col gap-2 w-full mb-3"
                   aria-label="Suggested prompts"
                 >
                   {PRESET_PROMPTS.map((prompt) => (
                     <button
                       key={prompt}
                       type="button"
-                      className="text-xs text-[var(--muted)] hover:text-[var(--ink)] bg-[var(--page)] hover:bg-[var(--line)] border border-[var(--line)] px-2.5 py-1 rounded-full transition-colors whitespace-nowrap flex-shrink-0"
+                      className="w-full text-left py-2.5 px-3.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-800 rounded-xl bg-[var(--page)] hover:border-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       onClick={() => handleSend(prompt)}
                     >
                       {prompt}
@@ -227,7 +234,7 @@ export default function AskFalachPageView() {
                   e.preventDefault();
                   handleSend();
                 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border border-[var(--line)] rounded-lg px-3 py-2 bg-[var(--page)] focus-within:border-[var(--ink)] transition-colors"
               >
                 <input
                   ref={inputRef}
@@ -235,7 +242,7 @@ export default function AskFalachPageView() {
                   placeholder="Ask about design projects, metrics, or philosophy..."
                   value={inputQuery}
                   onChange={(e) => setInputQuery(e.target.value)}
-                  className="flex-1 text-sm bg-transparent border-0 outline-none text-[var(--ink)] placeholder:text-[var(--faint)]"
+                  className="flex-1 text-sm bg-transparent border-0 outline-none text-[var(--ink)] placeholder:text-[var(--faint)] focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
                   aria-label="Ask a question about Falach"
                 />
                 <button
@@ -253,9 +260,8 @@ export default function AskFalachPageView() {
                 </button>
               </form>
 
-              <p className="text-[11px] text-neutral-400 dark:text-neutral-500 text-center mt-2.5 tracking-normal m-0">
-                FalachLLM is an AI counterpart and can make mistakes. For
-                official inquiries:{" "}
+              <p className="text-[11px] text-neutral-400 dark:text-neutral-500 text-center mt-2.5 tracking-normal m-0 whitespace-nowrap overflow-hidden text-ellipsis">
+                FalachLLM can make mistakes · Reach out:{" "}
                 <a
                   href="mailto:falachns10@gmail.com"
                   className="underline hover:text-[var(--ink)] transition-colors"

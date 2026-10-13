@@ -12,10 +12,9 @@ export interface LLMMessage {
 }
 
 export const PRESET_PROMPTS = [
-  "PT KAI ESG platform",
-  "Qiscus CSAT survey",
-  "Design systems & Claude skill",
-  "AI-assisted design workflow",
+  "Tell me about your work on PT KAI’s ESG platform.",
+  "How did you design the CSAT survey at Qiscus?",
+  "What is your approach to AI-assisted design engineering?",
 ] as const;
 
 export interface IntentRule {
@@ -265,6 +264,13 @@ export const INTENT_RULES: IntentRule[] = [
   },
 ];
 
+const FALLBACK_RESPONSES = [
+  "Hmm, that's not something I prepared my AI to know. Maybe reach out to the real Falach on LinkedIn or X?",
+  "I'm only here to chat about me and my work — I can't help with that kind of question. If you want to know more about my projects or experiences, just let me know!",
+];
+
+let fallbackIndex = 0;
+
 export function getFalachResponse(query: string): {
   text: string;
   links?: LLMLink[];
@@ -280,13 +286,10 @@ export function getFalachResponse(query: string): {
     }
   }
 
+  const reply = FALLBACK_RESPONSES[fallbackIndex % FALLBACK_RESPONSES.length];
+  fallbackIndex++;
+
   return {
-    text: "I focus specifically on Falach's enterprise design cases, ESG platforms, and design engineering workflows. Feel free to ask about his work at PT KAI, Qiscus Helpdesk, or reach him directly at falachns10@gmail.com.",
-    links: [
-      {
-        label: "View Featured Works",
-        url: "/",
-      },
-    ],
+    text: reply,
   };
 }

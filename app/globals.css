@@ -1237,12 +1237,25 @@ textarea:focus-visible {
 }
 
 .drawer-input {
+.drawer-input-form:focus-within {
+  border-color: var(--ink);
+}
+
+.drawer-input {
   flex: 1;
   background: transparent;
   border: none;
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
   font-size: 13px;
   color: var(--ink);
+}
+
+.drawer-input:focus,
+.drawer-input:focus-visible,
+.drawer-input:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .drawer-input::placeholder {
@@ -1276,6 +1289,9 @@ textarea:focus-visible {
   text-align: center;
   margin: 8px 0 0 0;
   letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ========================================================
