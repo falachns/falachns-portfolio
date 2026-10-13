@@ -222,7 +222,6 @@ export default function AskFalachDrawer() {
             <h2 id="drawer-heading" className="drawer-title">
               FalachLLM
             </h2>
-            <span className="drawer-badge">AI Assistant</span>
           </div>
           <p id="drawer-subheading" className="sr-only">
             AI counterpart grounded in Falach&apos;s product design work,

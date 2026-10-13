@@ -8,6 +8,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowUpRight01Icon,
   SentIcon,
+  SparklesIcon,
 } from "@hugeicons/core-free-icons";
 import {
   LLMMessage,
@@ -92,7 +93,15 @@ export default function AskFalachPageView() {
           <header className="subpage-header">
             <div className="section-label-quiet">AI / KNOWLEDGE BASE</div>
             <div className="flex items-center justify-between">
-              <h1 className="subpage-title">Ask FalachLLM</h1>
+              <div className="flex items-center gap-2">
+                <HugeiconsIcon
+                  icon={SparklesIcon}
+                  size={20}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
+                <h1 className="subpage-title">FalachLLM</h1>
+              </div>
               {messages.length > 0 && (
                 <button
                   type="button"

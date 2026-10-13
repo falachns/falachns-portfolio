@@ -161,32 +161,48 @@ export const INTENT_RULES: IntentRule[] = [
     ],
   },
 
-  // 10. Design Philosophy & Principles
+  // 10. Design Tools & Stack
+  {
+    id: "design-tools",
+    matcher: (q) =>
+      /\b(design tools?|tools?|software|what tools (do you|are you) (use|using)|what tools|figma|framer|jitter|lottielab|design stack|tech stack|alat desain)\b/i.test(
+        q
+      ),
+    reply:
+      "My primary stack for product design and prototyping includes Figma, Framer, Jitter, and LottieLab. For bridging design to code, I use Cursor, VS Code, React, and Tailwind CSS.",
+  },
+
+  // 11. Skills & Capabilities
+  {
+    id: "skills-capabilities",
+    matcher: (q) =>
+      /\b(skills?|what can you do|capabilities|keahlian|kemampuan|what are your skills|what skills|core capabilities)\b/i.test(
+        q
+      ),
+    reply:
+      "Core capabilities span End-to-End Product Design, Design Systems & Semantic Tokens, High-Fidelity Interactive Prototyping, User Research, and AI-Assisted Frontend Development (React/Tailwind).",
+  },
+
+  // 12. Inspiration & Design Philosophy
   {
     id: "design-philosophy",
     matcher: (q) =>
-      /\b(philosophy|principles|approach|mindset|craft|values|filosofi|prinsip)\b/i.test(
+      /\b(what inspires you|what is your inspiration|inspiration|inspirasi|philosophy|filosofi|design approach|approach to design|principles?|prinsip|design philosophy|mindset)\b/i.test(
         q
       ),
     reply:
-      "Falach's design philosophy centers on quiet editorial restraint and practical ergonomics:\n\n• Clarity over decoration: Every pixel and token earns its place by reducing cognitive friction.\n• Design systems & tokens: Systematic tokens ensure scalable accessibility across light and dark modes.\n• Interaction ergonomics: Touch-first action zones, clear affordances, and zero extraneous steps.\n• Designer-engineer bridge: Writing clean frontend code ensures design intent survives 1:1 into production.",
-    links: [
-      {
-        label: "View Featured Works",
-        url: "/",
-      },
-    ],
+      "My approach centers on clarity over decoration, reducing interaction cost, and building scalable semantic systems. I'm inspired by software that feels effortless to use despite solving deep operational complexity—like the enterprise railway workflows at KAI or Helpdesk tools at Qiscus.",
   },
 
-  // 11. Contact & Collaboration
+  // 13. Opportunities, Freelance, Collaboration & Contact
   {
-    id: "contact",
+    id: "opportunity-collab",
     matcher: (q) =>
-      /\b(contact|email|hire|freelance|collaborate|connect|reach|hubungi|kontak)\b/i.test(
+      /\b(part-?time|freelance|opportunity|opportunities|hire|hiring|work together|open for (work|opportunities)|collab|collaboration|collaborate|kerja sama|kontrak|proyek|contact|reach out|hubungi|kontak)\b/i.test(
         q
       ),
     reply:
-      "Falach is open to discussing high-impact product design roles, enterprise systems, and frontend collaborations:\n\n• Email: falachns10@gmail.com\n• LinkedIn: linkedin.com/in/falachnoorsyahid\n• GitHub: github.com/falachns\n• Location: Bandung, Indonesia (UTC+7)",
+      "Falach is open to discussing high-impact product design opportunities, selective freelance, or collaborative design engineering projects. Feel free to shoot an email directly to falachns10@gmail.com or connect on LinkedIn!",
     links: [
       {
         label: "Send Email",
@@ -197,6 +213,17 @@ export const INTENT_RULES: IntentRule[] = [
         url: "https://www.linkedin.com/in/falachnoorsyahid/",
       },
     ],
+  },
+
+  // 14. Location & Base
+  {
+    id: "location",
+    matcher: (q) =>
+      /\b(where (do )?you live|where are you (based|located)|where (is )?falach (based|living)|location|lokasi|based in|tinggal di mana|domisili|live in|living in)\b/i.test(
+        q
+      ),
+    reply:
+      "I'm based in Bandung, Indonesia (UTC+7). Currently working on platforms for PT KAI here.",
   },
 
   // --- B. OFF-TOPIC / CASUAL / WIT INTENTS ---
