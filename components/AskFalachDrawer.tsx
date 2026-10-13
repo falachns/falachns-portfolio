@@ -83,11 +83,14 @@ export default function AskFalachDrawer() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -245,8 +248,8 @@ export default function AskFalachDrawer() {
                   strokeLinejoin="round"
                   aria-hidden="true"
                 >
-                  <path d="M21 7v6h-6" />
-                  <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
                 </svg>
               </button>
             )}
@@ -318,18 +321,18 @@ export default function AskFalachDrawer() {
             )}
             <div ref={messagesEndRef} />
           </div>
-        </div>
 
-        {/* Footer with Suggested Prompts (when empty) + Input + Micro-Disclaimer */}
-        <div className="drawer-footer">
-          {/* Suggested Prompts stacked cards docked right above input field (hidden once chat starts) */}
+          {/* Suggested Prompts docked at bottom of body above input footer (only when empty) */}
           {messages.length === 0 && (
-            <div className="drawer-prompts-bar" aria-label="Suggested prompts">
+            <div
+              className="drawer-prompts-wrapper"
+              aria-label="Suggested prompts"
+            >
               {PRESET_PROMPTS.map((prompt) => (
                 <button
                   key={prompt}
                   type="button"
-                  className="drawer-prompt-card"
+                  className="drawer-prompt-btn"
                   onClick={() => handleSend(prompt)}
                 >
                   {prompt}
@@ -337,7 +340,10 @@ export default function AskFalachDrawer() {
               ))}
             </div>
           )}
+        </div>
 
+        {/* Footer with Input + Micro-Disclaimer */}
+        <div className="drawer-footer">
           {/* Form input */}
           <form
             onSubmit={(e) => {

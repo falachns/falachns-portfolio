@@ -112,8 +112,8 @@ export default function AskFalachPageView() {
                     strokeLinejoin="round"
                     aria-hidden="true"
                   >
-                    <path d="M21 7v6h-6" />
-                    <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
                   </svg>
                 </button>
               )}
@@ -199,6 +199,25 @@ export default function AskFalachPageView() {
                 ))
               )}
 
+              {messages.length === 0 && (
+                <div
+                  className="drawer-prompts-wrapper"
+                  aria-label="Suggested prompts"
+                  style={{ padding: "8px 0 0 0" }}
+                >
+                  {PRESET_PROMPTS.map((prompt) => (
+                    <button
+                      key={prompt}
+                      type="button"
+                      className="drawer-prompt-btn"
+                      onClick={() => handleSend(prompt)}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {isTyping && (
                 <div className="mr-auto items-start">
                   <span className="font-mono text-[11px] text-[var(--subtle)]">
@@ -209,22 +228,8 @@ export default function AskFalachPageView() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Bar Area Docked with Suggested Prompts & Disclaimer */}
+            {/* Input Bar Area */}
             <div className="pt-4 border-t border-[var(--line)] mt-4">
-              {messages.length === 0 && (
-                <div className="drawer-prompts-bar" aria-label="Suggested prompts">
-                  {PRESET_PROMPTS.map((prompt) => (
-                    <button
-                      key={prompt}
-                      type="button"
-                      className="drawer-prompt-card"
-                      onClick={() => handleSend(prompt)}
-                    >
-                      {prompt}
-                    </button>
-                  ))}
-                </div>
-              )}
 
               <form
                 onSubmit={(e) => {
