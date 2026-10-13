@@ -24,9 +24,9 @@ export default function LiveClock() {
   }, []);
 
   return (
-    <span className="footer-clock" aria-label="Current time in Indonesia (UTC+7)">
-      <span>IDN (UTC+7)</span>
-      {timeString && <span style={{ fontVariantNumeric: "tabular-nums" }}>{timeString}</span>}
+    <span className="footer-clock" aria-label="Current time in Bandung, Indonesia (UTC+7)">
+      <span>Bandung, Indonesia (UTC+7)</span>
+      {timeString && <span className="footer-clock-time">{timeString}</span>}
     </span>
   );
 }

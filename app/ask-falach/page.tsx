@@ -132,14 +132,15 @@ export default function AskFalachPage() {
   };
 
   return (
-    <main id="main-content" className="site-wrapper">
-      <a className="skip-link" href="#chat-content">
+    <div className="site-wrapper">
+      <a className="skip-link" href="#main-content">
         Skip to chat
       </a>
 
       <Header />
 
-      <article className="subpage-container wrap" id="chat-content">
+      <main id="main-content">
+        <article className="subpage-container wrap" id="chat-content">
         <header className="subpage-header">
           <div className="section-label-quiet">AI / KNOWLEDGE BASE</div>
           <h1 className="subpage-title">Ask FalachLLM</h1>
@@ -262,7 +263,7 @@ export default function AskFalachPage() {
             <button
               type="submit"
               disabled={!inputQuery.trim() || isTyping}
-              className="pomo-btn-clean disabled:opacity-40 disabled:cursor-not-allowed"
+              className="drawer-send-btn"
               aria-label="Send message"
             >
               <HugeiconsIcon icon={SentIcon} size={13} strokeWidth={2} aria-hidden="true" />
@@ -270,8 +271,9 @@ export default function AskFalachPage() {
           </form>
         </section>
       </article>
+      </main>
 
       <Footer />
-    </main>
+    </div>
   );
 }

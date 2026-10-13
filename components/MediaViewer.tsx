@@ -48,6 +48,7 @@ export default function MediaViewer({
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-auto rounded-lg object-cover project-video"
           style={{ aspectRatio }}
           onError={() => {

@@ -139,11 +139,49 @@ button {
   }
 }
 
+/* Interactive Focus Rings (WCAG AA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 1.5px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@keyframes greetingFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.greeting-rotator {
+  display: inline-block;
+  margin-right: 6px;
+  animation: greetingFade 260ms ease-out both;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Page Outer Wrapper */
 .site-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  animation: pageEntrance 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ========================================================
@@ -360,6 +398,11 @@ button {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-item:hover {
+  transform: translateY(-2px);
 }
 
 .project-meta-line {
@@ -392,6 +435,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-link:hover .project-title {
@@ -401,7 +445,7 @@ button {
 .project-arrow {
   opacity: 0;
   transform: translate(-3px, 3px);
-  transition: all 150ms ease;
+  transition: all 160ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-link:hover .project-arrow {
@@ -448,11 +492,16 @@ button {
   border: 1px solid var(--line);
   background: var(--card);
   position: relative;
-  transition: border-color 150ms ease;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 
-.project-link:hover .project-media-box {
+.project-item:hover .project-media-box {
   border-color: var(--subtle);
+  box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .project-item:hover .project-media-box {
+  box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.4);
 }
 
 .project-video {
@@ -461,6 +510,7 @@ button {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-img {
@@ -469,6 +519,12 @@ button {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-item:hover .project-video,
+.project-item:hover .project-img {
+  transform: scale(1.008);
 }
 
 .project-tags-row {
@@ -487,6 +543,12 @@ button {
   padding: 2px 8px;
   border-radius: 4px;
   background: var(--card);
+  transition: all 160ms ease;
+}
+
+.project-item:hover .tag-mono {
+  color: var(--ink);
+  background: var(--card-hover);
 }
 
 /* ========================================================
@@ -839,75 +901,6 @@ button {
   margin: 0;
 }
 
-/* Pomodoro Clean Widget (No yellow accents) */
-.pomo-clean-widget {
-  padding: 24px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  margin: 28px 0;
-}
-
-.pomo-clean-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.pomo-clean-tab {
-  font-size: 12px;
-  font-family: var(--font-family-mono);
-  padding: 4px 10px;
-  border-radius: 4px;
-  color: var(--subtle);
-  background: transparent;
-  transition: all 120ms ease;
-}
-
-.pomo-clean-tab.active {
-  color: var(--ink);
-  background: var(--page);
-  border: 1px solid var(--line);
-}
-
-.pomo-clean-display {
-  font-family: var(--font-family-mono);
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  color: var(--ink);
-  margin: 8px 0 16px 0;
-  line-height: 1;
-}
-
-.pomo-clean-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.pomo-btn-clean {
-  font-size: 12px;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 4px;
-  background: var(--ink);
-  color: var(--page);
-  transition: opacity 120ms ease;
-}
-.pomo-btn-clean:hover {
-  opacity: 0.85;
-}
-
-.pomo-btn-clean.btn-secondary {
-  background: transparent;
-  color: var(--muted);
-  border: 1px solid var(--line);
-}
-.pomo-btn-clean.btn-secondary:hover {
-  color: var(--ink);
-  border-color: var(--subtle);
-}
-
 /* ========================================================
    SLIDE-OVER DRAWER ("Ask FalachLLM" - Mirroring RacheLLM)
    ======================================================== */
@@ -1247,51 +1240,58 @@ button {
   color: var(--subtle);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.theme-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--subtle);
-  background: transparent;
-  border: 1px solid var(--line);
-  padding: 3px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 120ms ease;
+.footer-clock-time {
+  font-variant-numeric: tabular-nums;
+  color: var(--faint);
 }
 
-.theme-toggle-btn:hover {
-  color: var(--ink);
-  border-color: var(--subtle);
-  background: var(--card);
-}
-
-.theme-toggle-btn .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ink);
-  display: inline-block;
-}
-
-.footer-back-to-top {
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  color: var(--subtle);
+.copied-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 10.5px;
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.copy-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  color: var(--faint);
   transition: color 150ms ease;
 }
 
-.footer-back-to-top:hover {
+.footer-email-btn:hover .copy-icon-wrap {
   color: var(--ink);
+}
+
+.theme-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--subtle);
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: auto;
+}
+
+.theme-icon-btn:hover {
+  color: var(--ink);
+  border-color: var(--subtle);
+  background: var(--card);
 }
 
 /* ========================================================

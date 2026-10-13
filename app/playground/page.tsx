@@ -60,6 +60,17 @@ export default function PlaygroundPage() {
             <p className="subpage-lead">
               I’m a curious designer who loves building products that are genuinely useful for everyone. For me, design is a dialogue between users, designers, and developers where strategy and craft work together to create something that feels effortless. Subtle, but with great impact.
             </p>
+            <div style={{ marginTop: "12px" }}>
+              <a
+                href="https://falachns.framer.website/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm font-medium text-[var(--ink)] hover:text-[var(--muted)] border-b border-[var(--ink)] pb-0.5 transition-colors"
+              >
+                <span>The full story&apos;s in my updated resume</span>
+                <span>↗</span>
+              </a>
+            </div>
           </header>
 
           <section className="honors-list" aria-label="Honors and awards">

@@ -3,6 +3,7 @@ import { getFeaturedProjects } from "@/data/projects";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MediaViewer from "@/components/MediaViewer";
+import GreetingSwitcher from "@/components/GreetingSwitcher";
 
 export default function Home() {
   const projects = getFeaturedProjects();
@@ -17,25 +18,23 @@ export default function Home() {
       <Header />
 
       <main id="main-content">
-        {/* Authentic Editorial Hero (Purified of Hallucinated Fluff) */}
+        {/* Authentic Editorial Hero Matching Framer */}
         <section className="hero wrap" aria-labelledby="hero-title">
           <div className="hero-intro">
             <h1 id="hero-title" className="hero-headline">
-              Good day! I&apos;m Falach, junior product designer. Crafting for every single pixel.
-            </h1>
-            <p className="hero-body">
+              <GreetingSwitcher />
               Product Designer building products into usable, meaningful digital experiences.
-            </p>
+            </h1>
             <a
               href="https://www.qiscus.com/en/about-us"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hero-status"
               aria-label="Current role: Designing platform for railway ecosystem at PT KAI"
             >
               <span className="neutral-indicator-dot" aria-hidden="true" />
               <span>
-                Currently designing platform for railway ecosystem, with 40M+ users at <strong>PT KAI (Persero)</strong>.
+                Currently designing platform for railway ecosystem, with 40M+ users at <strong>PT KAI (Persero)</strong>
               </span>
             </a>
           </div>
@@ -115,65 +114,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        {/* Labs & Explorations Archive Strip */}
-        <section className="wrap section-spacer" aria-label="Explorations and archive">
-          <div className="section-header">
-            <h2 className="section-title">Labs & Notes</h2>
-            <span className="section-sublabel">Experiments & Archive</span>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            <p className="project-desc">
-              Curious explorations, Pomodoro focus spaces, and startup incubation projects.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", fontSize: "13px" }}>
-              <Link
-                href="/explorations"
-                style={{
-                  color: "var(--ink)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                Focus Pomodoro Timer & Gallery ↗
-              </Link>
-              <Link
-                href="/playground"
-                style={{
-                  color: "var(--ink)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                Honors & Recognitions ↗
-              </Link>
-              <Link
-                href="/work/habitz"
-                style={{
-                  color: "var(--muted)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                Habitz App (UNS Hub) ↗
-              </Link>
-              <Link
-                href="/work/artverse"
-                style={{
-                  color: "var(--muted)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                Artverse Commerce ↗
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* Minimal Footer with Theme Toggle */}
+      {/* Minimal Footer */}
       <Footer />
     </div>
   );

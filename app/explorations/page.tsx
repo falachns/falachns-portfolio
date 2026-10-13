@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MediaViewer from "@/components/MediaViewer";
-import PomodoroWidget from "@/components/PomodoroWidget";
 
 export const metadata: Metadata = {
-  title: "Design Works & Explorations — Falach Noor Syahid",
-  description: "Focus Pomodoro timer and creative UI/UX design experiments by Falach Noor Syahid.",
+  title: "Design Works & Explorations — Falachns",
+  description: "Creative UI/UX design experiments, interaction prototypes, and visual systems by Falach Noor Syahid.",
   alternates: {
     canonical: "/explorations",
   },
@@ -56,56 +55,50 @@ const EXPLORATION_ITEMS = [
 
 export default function ExplorationsPage() {
   return (
-    <main id="main-content" className="site-wrapper">
-      <a className="skip-link" href="#explorations-content">
+    <div className="site-wrapper">
+      <a className="skip-link" href="#main-content">
         Skip to content
       </a>
 
       <Header />
 
-      <article className="subpage-container wrap" id="explorations-content">
-        {/* Authentic Header Matching Framer */}
-        <header className="subpage-header">
-          <div className="section-label-quiet">LAB / FOCUS TIMER</div>
-          <h1 className="subpage-title">Focus Pomodoro Timer</h1>
-          <p className="subpage-lead">
-            Calm space to get things done. Set your timer, queue your tasks, pick a background that matches your mood, and let the ambient sound keep you in the zone. Try it for yourself!
-          </p>
+      <main id="main-content">
+        <article className="subpage-container wrap" id="explorations-content">
+          <header className="subpage-header">
+            <div className="section-label-quiet">ARCHIVE / VISUAL EXPERIMENTS</div>
+            <h1 className="subpage-title">Design Works &amp; Explorations</h1>
+            <p className="subpage-lead">
+              A visual archive of interaction prototypes, micro-typographic layouts, and interface design systems.
+            </p>
+          </header>
 
-          <PomodoroWidget />
-        </header>
-
-        {/* Selected Visual Explorations Showcase */}
-        <section className="section-block" aria-label="Selected Explorations">
-          <div className="section-header">
-            <h2 className="section-title">Selected Explorations</h2>
-            <span className="section-sublabel">Interaction & Visual Design</span>
-          </div>
-
-          <div className="flex flex-col gap-12">
-            {EXPLORATION_ITEMS.map((item) => (
-              <figure key={item.title} className="flex flex-col gap-3">
-                <MediaViewer
-                  video={item.video}
-                  videoPoster={item.poster}
-                  image={item.image}
-                  alt={item.title}
-                  aspectRatio="16 / 10"
-                />
-                <figcaption className="flex flex-col gap-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-medium text-[var(--ink)] m-0">{item.title}</h3>
-                    <span className="tag-mono">{item.tag}</span>
-                  </div>
-                  <p className="text-[13px] text-[var(--subtle)] m-0 leading-relaxed">{item.caption}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-      </article>
+          {/* Pure Gallery Visuals */}
+          <section aria-label="Visual design archive">
+            <div className="flex flex-col gap-12">
+              {EXPLORATION_ITEMS.map((item) => (
+                <figure key={item.title} className="flex flex-col gap-3">
+                  <MediaViewer
+                    video={item.video}
+                    videoPoster={item.poster}
+                    image={item.image}
+                    alt={item.title}
+                    aspectRatio="16 / 10"
+                  />
+                  <figcaption className="flex flex-col gap-1">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-sm font-medium text-[var(--ink)] m-0">{item.title}</h2>
+                      <span className="tag-mono">{item.tag}</span>
+                    </div>
+                    <p className="text-[13px] text-[var(--subtle)] m-0 leading-relaxed">{item.caption}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        </article>
+      </main>
 
       <Footer />
-    </main>
+    </div>
   );
 }
