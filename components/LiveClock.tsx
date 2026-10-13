@@ -24,9 +24,13 @@ export default function LiveClock() {
   }, []);
 
   return (
-    <span className="footer-clock" aria-label="Current time in Bandung, Indonesia (UTC+7)">
+    <span className="footer-clock" aria-label="Current time in Bandung, Indonesia (UTC+7)" suppressHydrationWarning>
       <span>Bandung, Indonesia (UTC+7)</span>
-      {timeString && <span className="footer-clock-time">{timeString}</span>}
+      {timeString && (
+        <span className="footer-clock-time" suppressHydrationWarning>
+          {timeString}
+        </span>
+      )}
     </span>
   );
 }

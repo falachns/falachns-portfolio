@@ -23,7 +23,7 @@ export default function NotFound() {
               This page is under construction
             </h1>
             <p
-              className="text-sm font-editorial italic text-[var(--muted)] leading-relaxed m-0 max-w-md"
+              className="text-sm text-[var(--muted)] leading-relaxed m-0 max-w-md"
               style={{ fontSize: "16px" }}
             >
               Still polishing things up here. Check back soon!

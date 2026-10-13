@@ -17,28 +17,24 @@ const RECOGNITIONS = [
     category: "Design Competition",
     year: "2024",
     image: "https://framerusercontent.com/images/JpOH5VvYJ91UmDr3gsWecVGxfew.jpg?width=1922&height=1442",
-    description: "End-to-end product proposal for travel experience optimization, recognized by Tiket.com product design team.",
   },
   {
     title: "Top Framer Creator 2024",
     category: "Community & Craft",
     year: "2024",
     image: "https://framerusercontent.com/images/TlQQg0Ey3jTrNFiTxX6AUI3Owbc.png?width=1348&height=768",
-    description: "Recognized among top creators for building modular interactive components, design systems, and web templates.",
   },
   {
     title: "Most Outstanding Student UNS 2024",
     category: "Academic & Leadership",
     year: "2024",
     image: "https://framerusercontent.com/images/IkHMOoXvLN8yaUdZAaPdNvaM.jpg?width=5184&height=3456",
-    description: "Awarded Mahasiswa Berprestasi (Mawapres) Universitas Sebelas Maret for achievements in product design innovation and research.",
   },
   {
     title: "Pitching Nurture to Scale 2023",
     category: "Startup Incubation",
     year: "2023",
     image: "https://framerusercontent.com/images/oEt2GJ6bO3Xc5v2peEzt6IOo.png?width=1036&height=768",
-    description: "Pitched startup product prototype at UNS Innovation Hub, securing incubation funding and mentorship.",
   },
 ];
 
@@ -74,18 +70,12 @@ export default function PlaygroundPage() {
           </header>
 
           <section className="honors-list" aria-label="Honors and awards">
-            <div className="section-header" style={{ marginBottom: "20px" }}>
-              <h2 className="section-title">Milestones & Recognitions</h2>
-              <span className="section-sublabel">2023 — 2024</span>
-            </div>
-
             {RECOGNITIONS.map((item) => (
               <div className="honor-item" key={item.title}>
                 <div className="honor-top">
                   <span className="honor-name">{item.title}</span>
                   <span className="honor-year">{item.year}</span>
                 </div>
-                <p className="honor-desc">{item.description}</p>
                 <div style={{ marginTop: "12px" }}>
                   <MediaViewer
                     src={item.image}

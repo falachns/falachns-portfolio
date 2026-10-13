@@ -65,11 +65,7 @@ export default function ExplorationsPage() {
       <main id="main-content">
         <article className="subpage-container wrap" id="explorations-content">
           <header className="subpage-header">
-            <div className="section-label-quiet">ARCHIVE / VISUAL EXPERIMENTS</div>
-            <h1 className="subpage-title">Design Works &amp; Explorations</h1>
-            <p className="subpage-lead">
-              A visual archive of interaction prototypes, micro-typographic layouts, and interface design systems.
-            </p>
+            <h1 className="subpage-title">Explorations</h1>
           </header>
 
           {/* Pure Gallery Visuals */}

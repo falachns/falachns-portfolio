@@ -22,31 +22,25 @@ export default function Home() {
         <section className="hero wrap" aria-labelledby="hero-title">
           <div className="hero-intro">
             <h1 id="hero-title" className="hero-headline">
-              <GreetingSwitcher />
-              Product Designer building products into usable, meaningful digital experiences.
+              <GreetingSwitcher /> I’m Falach, product designer building products into usable, meaningful digital experiences.
             </h1>
-            <a
-              href="https://www.qiscus.com/en/about-us"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-status"
-              aria-label="Current role: Designing platform for railway ecosystem at PT KAI"
-            >
-              <span className="neutral-indicator-dot" aria-hidden="true" />
-              <span>
-                Currently designing platform for railway ecosystem, with 40M+ users at <strong>PT KAI (Persero)</strong>
-              </span>
-            </a>
+            <p className="hero-status-quiet">
+              Currently designing products for the Indonesian railway ecosystem at{" "}
+              <a
+                href="https://sustainability.kai.id/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-link-quiet"
+              >
+                PT KAI (Persero)
+              </a>
+              .
+            </p>
           </div>
         </section>
 
-        {/* Selected Work Section (Strictly the 2 Featured Case Studies) */}
-        <section className="wrap section-spacer" id="work" aria-label="Selected works">
-          <div className="section-header">
-            <h2 className="section-title">Selected Work</h2>
-            <span className="section-sublabel">2024 — 2026</span>
-          </div>
-
+        {/* Featured Case Studies */}
+        <section className="wrap section-spacer" id="work" aria-label="Featured works">
           <div className="projects-container">
             {projects.map((project, idx) => (
               <article className="project-item" key={project.slug}>
@@ -72,8 +66,6 @@ export default function Home() {
                   </h3>
                 </Link>
 
-                <p className="project-desc">{project.summary}</p>
-
                 {/* Media Container: AutoPlay Loop Muted Video with Graceful Image Fallback */}
                 <Link
                   href={`/work/${project.slug}`}
@@ -97,7 +89,7 @@ export default function Home() {
                 {project.bullets && project.bullets.length > 0 && (
                   <ul className="project-bullets-subdued" aria-label="Key highlights">
                     {project.bullets.map((b) => (
-                      <li key={b}>{b.replace(/^[✦✧]\s*/, "")}</li>
+                      <li key={b}>{b}</li>
                     ))}
                   </ul>
                 )}

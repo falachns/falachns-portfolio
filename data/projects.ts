@@ -61,8 +61,7 @@ export const projects: Project[] = [
     slug: "qiscus-csat",
     eyebrow: "Qiscus Helpdesk · Omnichannel",
     title: "Elevating CSAT Survey Experience to Improve Agent Performance",
-    summary:
-      "A clearer end-to-end survey flow for admins and end-users, adopted by 20+ enterprise clients.",
+    summary: "",
     bullets: [
       "✦  Designed end-to-end survey creation for admin and end-user, adopted by 20+ enterprise clients.",
       "✦  Enabling agents to capture customer feedback and drive faster ticket resolution.",
@@ -172,8 +171,7 @@ export const projects: Project[] = [
     slug: "customer-microsite",
     eyebrow: "E-Commerce · Merchant Conversion",
     title: "Redesigning Customer Microsite for Higher Merchant Conversion",
-    summary:
-      "Improving product detail clarity and contributing to an approximately 10% lift in customer order sessions.",
+    summary: "",
     bullets: [
       "✦  Contributing to ~10% increase in customer order sessions.",
       "✦  Improved microsite product pages allowing customers to view variants details clearly.",

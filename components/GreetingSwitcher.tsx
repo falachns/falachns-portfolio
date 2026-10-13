@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const GREETINGS = ["Good day!", "Bonjour!", "Ni Hao!", "I’m Falach"];
+const GREETINGS = ["Good day!", "Ni Hao!", "Bonjour!"];
 
 export default function GreetingSwitcher() {
   const [index, setIndex] = useState(0);

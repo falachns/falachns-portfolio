@@ -14,52 +14,46 @@ interface Message {
 }
 
 const PRESET_PROMPTS = [
-  "What was your role in the Qiscus CSAT project?",
+  "What is your role at PT KAI (Persero)?",
+  "How did you design the Qiscus CSAT Builder?",
   "How was the ~10% conversion lift achieved?",
-  "What is your product design philosophy?",
-  "How do you handle developer handoff & Design QA?",
+  "What is your core design philosophy & approach?",
 ];
 
 const KNOWLEDGE_BASE: { keywords: string[]; answer: string; links?: { label: string; url: string }[] }[] = [
   {
+    keywords: ["kai", "railway", "kereta", "current", "role", "perkeretaapian"],
+    answer:
+      "Currently at PT KAI (Persero), I design digital platforms for the national railway ecosystem serving over 40 million users across Indonesia.\n\nMy focus centers on high-reliability flows, integrated passenger service touchpoints, and scalable UX architecture built to handle high concurrency with zero ambiguity.",
+    links: [{ label: "PT KAI Ecosystem", url: "https://sustainability.kai.id/" }],
+  },
+  {
     keywords: ["csat", "qiscus", "survey", "helpdesk", "enterprise", "agent"],
     answer:
-      "At Qiscus, I led the end-to-end UX/UI for the CSAT Survey Experience across Qiscus Helpdesk:\n\n• Adopted by 20+ enterprise clients across retail, healthcare, and transportation.\n• Designed a 4-step linear wizard combining custom branding, question logic, and automation triggers.\n• Side-by-side real-time preview to eliminate setup guesswork for admins.\n• Zero critical bugs reported in the first month post-launch.",
+      "At Qiscus Helpdesk, I led the end-to-end UX/UI for the CSAT Survey Experience:\n\n• Designed a 4-step survey builder for admins with live preview, eliminating setup guesswork.\n• Created a friction-free 1-tap rating flow for end customers across mobile web and in-app webviews.\n• Adopted by 20+ enterprise clients across retail, healthcare, and transportation to drive faster ticket resolution.\n• Zero critical bugs at launch.",
     links: [{ label: "Read CSAT Case Study", url: "/work/qiscus-csat" }],
   },
   {
     keywords: ["microsite", "conversion", "commerce", "10%", "lift", "order", "variant", "modifier"],
     answer:
-      "For the customer microsite redesign project, I eliminated order drop-off friction during variant selection:\n\n• Achieved an approximately 10% lift in completed order sessions.\n• Architected a structured modifier design pattern separating mandatory choices from optional add-ons.\n• Bottom-sheet product configuration with sticky real-time price calculation.",
+      "For the customer microsite redesign, I tackled checkout and configuration drop-off friction:\n\n• Contributed to an approximately 10% lift in completed customer order sessions.\n• Architected a structured modifier pattern separating mandatory choices from optional add-ons.\n• Designed a bottom-sheet product configuration modal with sticky real-time price tallying and 44px+ touch targets.",
     links: [{ label: "Read Customer Microsite Case Study", url: "/work/customer-microsite" }],
   },
   {
-    keywords: ["philosophy", "principle", "approach", "mindset", "craft"],
+    keywords: ["philosophy", "principle", "approach", "mindset", "process", "craft"],
     answer:
-      "Design philosophy centered on quiet restraint:\n\n1. Purposeful craft — Every pixel and component earns its place.\n2. Visual honesty — Let real product work carry weight rather than decorative noise.\n3. Frictionless ergonomics — Clear navigation and thumb-friendly decision areas.\n4. Human dialogue — Design is an active collaboration between users, designers, and engineers.",
-    links: [{ label: "Explore Works", url: "/" }],
+      "My design approach centers on clarity over decoration:\n\n• Clarity over decoration: Every element and pixel earns its keep through utility.\n• Semantic design tokens: Building consistent, accessible systems instead of ad-hoc styles.\n• Minimizing interaction cost: Reducing cognitive friction and keeping decision points clear.\n• Engineering bridge: Speaking frontend code fluently to ensure 100% design fidelity and resilient UX.",
+    links: [{ label: "Explore Work", url: "/" }],
   },
   {
-    keywords: ["handoff", "developer", "engineering", "qa", "collaboration", "pm"],
+    keywords: ["handoff", "developer", "engineering", "qa", "collaboration", "code"],
     answer:
-      "Collaboration is built on clarity:\n\n• Early exploration: Wireframing edge cases before PRDs are locked.\n• Systematic tokens: Documenting loading, empty, error, and hover states.\n• Active Design QA: Testing pre-release builds in staging to catch regressions before production release.",
+      "I treat design as an active dialogue with engineering:\n\n• Early wireframing and edge-case discovery before PRDs are locked.\n• Documented component tokens for all interactive states (loading, empty, disabled, error, hover).\n• Active Design QA in staging environments to verify layout fidelity and catch regressions before production release.",
   },
   {
-    keywords: ["habitz", "children", "habit", "gamification"],
+    keywords: ["contact", "email", "hire", "freelance", "reach", "connect", "linkedin"],
     answer:
-      "Habitz is a gamified habit-building mobile application incubated at UNS Innovation Hub:\n\n• Surveyed 140+ parents to identify daily routine friction.\n• Acquired 550+ app users on Google Play with 10 five-star reviews.",
-    links: [{ label: "Read Habitz Case Study", url: "/work/habitz" }],
-  },
-  {
-    keywords: ["artverse", "art", "forgery", "commerce"],
-    answer:
-      "Artverse addresses art forgery and buyer distrust in Indonesia:\n\n• Surveyed 35+ local artists and collectors (80% awareness of forgery risks).\n• Designed transparent provenance displays and verified certificates.",
-    links: [{ label: "Read Artverse Case Study", url: "/work/artverse" }],
-  },
-  {
-    keywords: ["contact", "email", "hire", "freelance", "job", "linkedin"],
-    answer:
-      "You can get in touch with Falach directly via email at falachns10@gmail.com or on LinkedIn (linkedin.com/in/falachnoorsyahid).",
+      "I'm always open to discussing product design opportunities and technical challenges. Reach out via email at falachns10@gmail.com or connect on LinkedIn.",
     links: [
       { label: "Send Email", url: "mailto:falachns10@gmail.com" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/falachnoorsyahid/" },
@@ -79,7 +73,7 @@ export default function AskFalachDrawer() {
     {
       id: "welcome",
       sender: "falach",
-      text: "Hi! I'm FalachLLM. Ask me anything about Falach's design work, case studies, or engineering collaboration.",
+      text: "Hey! Ask me anything about my product design work, design systems, or engineering collaboration.",
       timestamp: "Just now",
       links: [
         { label: "Qiscus CSAT", url: "/work/qiscus-csat" },
@@ -118,16 +112,19 @@ export default function AskFalachDrawer() {
     };
   }, [isOpen]);
 
-  // Lock scroll when open & focus input
+  // Lock scroll when open & focus input (robust across desktop & iOS Safari)
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       setTimeout(() => inputRef.current?.focus(), 150);
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -161,7 +158,7 @@ export default function AskFalachDrawer() {
 
       const replyText = match
         ? match.answer
-        : `Thank you for asking about "${query}". Falach focuses on enterprise SaaS workflows, design systems, and conversion-oriented product redesigns. Feel free to explore the case studies or email falachns10@gmail.com!`;
+        : `I focus on enterprise SaaS workflows, design systems, and conversion-oriented product redesigns. Feel free to ask about my work at PT KAI, Qiscus Helpdesk, or email me directly at falachns10@gmail.com.`;
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -181,7 +178,7 @@ export default function AskFalachDrawer() {
       {
         id: "welcome-reset-" + Date.now(),
         sender: "falach",
-        text: "Conversation reset. Feel free to ask about Falach's design projects, metrics, or select a suggested prompt below.",
+        text: "Conversation reset. Ask me anything about my product design work, metrics, or choose a prompt below.",
         timestamp: "Just now",
         links: [
           { label: "Qiscus CSAT", url: "/work/qiscus-csat" },

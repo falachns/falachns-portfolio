@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Instrument_Serif } from "next/font/google";
+import { Manrope } from "next/font/google";
 import AskFalachDrawer from "@/components/AskFalachDrawer";
 import "./globals.css";
 
@@ -7,14 +7,6 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-instrument",
-  weight: "400",
-  style: "italic",
 });
 
 export const viewport: Viewport = {
@@ -119,7 +111,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${instrumentSerif.variable}`}
+      className={manrope.variable}
       suppressHydrationWarning
     >
       <head>

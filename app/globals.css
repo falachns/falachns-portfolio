@@ -3,6 +3,7 @@
   /* Strict Neutral Palette (Zero Yellow / Zero Amber / Zero Lime) - Default Light Mode */
   --page: #fafafa;
   --page-alt: #ffffff;
+  --bg: #fafafa;
   --card: #f4f4f5;
   --card-hover: #ebebee;
   --ink: #171717;
@@ -10,6 +11,7 @@
   --subtle: #737373;
   --faint: #a3a3a3;
   --line: #e5e5e5;
+  --border: #e5e5e5;
   --line-subtle: rgba(0, 0, 0, 0.06);
   --selection: #e5e5e5;
   --accent-ink: #171717;
@@ -18,10 +20,10 @@
   --drawer-bg: #ffffff;
   --drawer-backdrop: rgba(0, 0, 0, 0.4);
 
-  /* Typography */
+  /* Typography: 100% Manrope with monospace for tabular data */
   --font-family-base: var(--font-manrope), "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-editorial: var(--font-instrument), "Instrument Serif", Georgia, serif;
+  --font-editorial: var(--font-manrope), "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Layout Width: Strictly 680px - 700px max */
   --content-max-width: 680px;
@@ -33,6 +35,7 @@
   /* Dark Mode: High Contrast WCAG AA Compliant */
   --page: #09090b;
   --page-alt: #0d0d10;
+  --bg: #09090b;
   --card: #18181b;
   --card-hover: #222226;
   --ink: #f4f4f5;
@@ -40,6 +43,7 @@
   --subtle: #71717a;
   --faint: #52525b;
   --line: #27272a;
+  --border: #27272a;
   --line-subtle: rgba(255, 255, 255, 0.08);
   --selection: #27272a;
   --accent-ink: #f4f4f5;
@@ -57,11 +61,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 32px;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   background-color: var(--page);
   color: var(--ink);
   font-family: var(--font-family-base);
@@ -121,8 +127,8 @@ button {
   max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @media (min-width: 640px) {
@@ -320,6 +326,36 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
+@media (max-width: 639px) {
+  .site-header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 12px;
+  }
+  .site-nav {
+    gap: 12px;
+    font-size: 12px;
+  }
+  .nav-kbd {
+    display: none;
+  }
+  .nav-ai-btn {
+    padding: 3px 8px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-nav {
+    gap: 8px;
+    font-size: 11.5px;
+  }
+  .nav-ai-btn {
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+}
+
 /* ========================================================
    HERO SECTION (Downsized & Restrained)
    ======================================================== */
@@ -354,6 +390,26 @@ textarea:focus-visible {
   line-height: 1.65;
   color: var(--muted);
   margin: 0 0 20px 0;
+}
+
+.hero-status-quiet {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 12px 0 0 0;
+}
+
+.hero-link-quiet {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.hero-link-quiet:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
 }
 
 /* Neutral Indicator Pill (Zero Yellow) */
@@ -938,6 +994,13 @@ textarea:focus-visible {
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
 }
 
+@media (max-width: 639px) {
+  .drawer-panel {
+    max-width: 100%;
+    border-left: none;
+  }
+}
+
 .drawer-panel.open {
   transform: translateX(0);
 }
@@ -1120,8 +1183,22 @@ textarea:focus-visible {
 
 .drawer-footer {
   padding: 16px 24px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
   border-top: 1px solid var(--line);
   background: var(--drawer-bg);
+}
+
+@media (max-width: 639px) {
+  .drawer-header {
+    padding: 16px 20px;
+  }
+  .drawer-body {
+    padding: 20px;
+  }
+  .drawer-footer {
+    padding: 12px 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
 }
 
 .drawer-input-form {
