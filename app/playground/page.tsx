@@ -4,10 +4,35 @@ import Footer from "@/components/Footer";
 import MediaViewer from "@/components/MediaViewer";
 
 export const metadata: Metadata = {
-  title: "Playground — Falachns",
-  description: "Personal design philosophy, honors, and milestone recognitions by Falach Noor Syahid.",
+  title: "Playground",
+  description:
+    "Design exploration, milestone recognitions, and personal craft philosophy by Falach Noor Syahid. Explore honors, awards, and complete resume details.",
   alternates: {
-    canonical: "/playground",
+    canonical: "https://falachns.web.id/playground",
+  },
+  openGraph: {
+    title: "Playground | Falach Noor Syahid",
+    description:
+      "Design exploration, milestone recognitions, and personal craft philosophy by Falach Noor Syahid. Explore honors, awards, and complete resume details.",
+    url: "https://falachns.web.id/playground",
+    siteName: "Falach Noor Syahid",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Falach Noor Syahid — Playground",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Playground | Falach Noor Syahid",
+    description:
+      "Design exploration, milestone recognitions, and personal craft philosophy by Falach Noor Syahid. Explore honors, awards, and complete resume details.",
+    images: ["/og-image.png"],
+    creator: "@falachns",
+    site: "@falachns",
   },
 };
 
@@ -17,24 +42,28 @@ const RECOGNITIONS = [
     category: "Design Competition",
     year: "2024",
     image: "https://framerusercontent.com/images/JpOH5VvYJ91UmDr3gsWecVGxfew.jpg?width=1922&height=1442",
+    alt: "Product Design Challenge certificate by Tiket Design recognizing top product design submission",
   },
   {
     title: "Top Framer Creator 2024",
     category: "Community & Craft",
     year: "2024",
     image: "https://framerusercontent.com/images/TlQQg0Ey3jTrNFiTxX6AUI3Owbc.png?width=1348&height=768",
+    alt: "Top Framer Creator 2024 recognition certificate and badge",
   },
   {
     title: "Most Outstanding Student UNS 2024",
     category: "Academic & Leadership",
     year: "2024",
     image: "https://framerusercontent.com/images/IkHMOoXvLN8yaUdZAaPdNvaM.jpg?width=5184&height=3456",
+    alt: "Most Outstanding Student Universitas Sebelas Maret (UNS) 2024 award ceremony",
   },
   {
     title: "Pitching Nurture to Scale 2023",
     category: "Startup Incubation",
     year: "2023",
     image: "https://framerusercontent.com/images/oEt2GJ6bO3Xc5v2peEzt6IOo.png?width=1036&height=768",
+    alt: "Pitching Nurture to Scale 2023 startup incubation presentation certificate",
   },
 ];
 
@@ -80,7 +109,7 @@ export default function PlaygroundPage() {
                   <MediaViewer
                     src={item.image}
                     poster={item.image}
-                    alt={item.title}
+                    alt={item.alt || item.title}
                     width={800}
                     height={500}
                   />

@@ -19,11 +19,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://falachns.web.id"),
   title: {
-    default: "Falachns — Product Designer",
-    template: "%s | Falachns — Product Designer",
+    default: "Falach Noor Syahid — Product Designer",
+    template: "%s | Falach Noor Syahid",
   },
   description:
-    "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
+    "Product Designer building digital products into usable, meaningful experiences. Currently designing for the Indonesian railway ecosystem at PT KAI (Persero).",
   keywords: [
     "Product Designer",
     "UX Designer",
@@ -35,9 +35,10 @@ export const metadata: Metadata = {
     "Qiscus",
     "KAI",
     "Portfolio",
+    "Accessibility",
   ],
   authors: [{ name: "Falach Noor Syahid", url: "https://falachns.web.id" }],
-  creator: "Falach Noor Syahid",
+  creator: "@falachns",
   publisher: "Falach Noor Syahid",
   icons: {
     icon: [
@@ -47,32 +48,33 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://falachns.web.id",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://falachns.web.id",
-    title: "Falachns — Product Designer",
+    title: "Falach Noor Syahid — Product Designer",
     description:
-      "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
-    siteName: "Falachns Portfolio",
+      "Product Designer building digital products into usable, meaningful experiences. Currently designing for the Indonesian railway ecosystem at PT KAI (Persero).",
+    siteName: "Falach Noor Syahid",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Falachns — Product Designer",
+        alt: "Falach Noor Syahid Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Falachns — Product Designer",
+    title: "Falach Noor Syahid — Product Designer",
     description:
-      "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
+      "Product Designer building digital products into usable, meaningful experiences. Currently designing for the Indonesian railway ecosystem at PT KAI (Persero).",
     images: ["/og-image.png"],
     creator: "@falachns",
+    site: "@falachns",
   },
   robots: {
     index: true,

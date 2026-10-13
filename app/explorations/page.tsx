@@ -4,10 +4,35 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Explorations — Falachns",
-  description: "Visual archive of interaction prototypes, motion studies, and interface design experiments by Falach Noor Syahid.",
+  title: "Explorations",
+  description:
+    "Visual archive of interaction prototypes, motion studies, and interface systems designed by Falach Noor Syahid.",
   alternates: {
-    canonical: "/explorations",
+    canonical: "https://falachns.web.id/explorations",
+  },
+  openGraph: {
+    title: "Explorations | Falach Noor Syahid",
+    description:
+      "Visual archive of interaction prototypes, motion studies, and interface systems designed by Falach Noor Syahid.",
+    url: "https://falachns.web.id/explorations",
+    siteName: "Falach Noor Syahid",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Falach Noor Syahid — Explorations",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Explorations | Falach Noor Syahid",
+    description:
+      "Visual archive of interaction prototypes, motion studies, and interface systems designed by Falach Noor Syahid.",
+    images: ["/og-image.png"],
+    creator: "@falachns",
+    site: "@falachns",
   },
 };
 
@@ -123,11 +148,11 @@ export default function ExplorationsPage() {
         {/* Pure Framer-fidelity explorations grid: no visible title, mounting directly under header */}
         <h1 className="sr-only">Explorations</h1>
         <div className="wrap pt-28 pb-20">
-          <section aria-label="Explorations visual gallery" className="flex flex-col space-y-6 sm:space-y-8">
+          <section aria-label="Explorations visual gallery" className="flex flex-col space-y-8 sm:space-y-12">
             {EXPLORATION_MEDIA.map((item, idx) => {
               if (item.type === "pomodoro-link") {
                 return (
-                  <figure key={`pomodoro-${idx}`} className="m-0">
+                  <div key={`pomodoro-${idx}`} className="w-full block">
                     <a
                       href={item.url}
                       target="_blank"
@@ -135,50 +160,59 @@ export default function ExplorationsPage() {
                       className="block group"
                       aria-label="Open Focus Pomodoro Timer preview"
                     >
-                      <video
-                        src={item.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        className="w-full rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60 group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors"
-                      />
-                      <figcaption className="mt-2 text-xs font-mono text-[var(--muted)] group-hover:text-[var(--ink)] transition-colors">
+                      <div className="w-full relative overflow-hidden rounded-xl border border-neutral-200/60 dark:border-neutral-800/60 bg-[var(--card)] transition-colors group-hover:border-neutral-400 dark:group-hover:border-neutral-600">
+                        <video
+                          src={item.video}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          className="block w-full h-auto aspect-[16/10] object-cover"
+                          style={{ display: "block", width: "100%", height: "auto" }}
+                        />
+                      </div>
+                      <p className="mt-2 text-xs font-mono text-[var(--muted)] group-hover:text-[var(--ink)] transition-colors">
                         {item.caption}
-                      </figcaption>
+                      </p>
                     </a>
-                  </figure>
+                  </div>
                 );
               }
 
               if (item.type === "video") {
                 return (
-                  <figure key={`video-${idx}`} className="m-0">
-                    <video
-                      src={item.src}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="w-full rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60"
-                    />
-                  </figure>
+                  <div key={`video-${idx}`} className="w-full block">
+                    <div className="w-full relative overflow-hidden rounded-xl border border-neutral-200/60 dark:border-neutral-800/60 bg-[var(--card)]">
+                      <video
+                        src={item.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="block w-full h-auto object-cover"
+                        style={{ display: "block", width: "100%", height: "auto" }}
+                      />
+                    </div>
+                  </div>
                 );
               }
 
               return (
-                <figure key={`image-${idx}`} className="m-0">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    sizes="(max-width: 680px) 100vw, 680px"
-                    className="w-full h-auto rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800/60"
-                  />
-                </figure>
+                <div key={`image-${idx}`} className="w-full block">
+                  <div className="w-full relative overflow-hidden rounded-xl border border-neutral-200/60 dark:border-neutral-800/60 bg-[var(--card)]">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      sizes="(max-width: 680px) 100vw, 680px"
+                      className="block w-full h-auto object-cover"
+                      style={{ display: "block", width: "100%", height: "auto" }}
+                    />
+                  </div>
+                </div>
               );
             })}
           </section>

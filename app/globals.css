@@ -323,9 +323,15 @@ textarea:focus-visible {
   font-size: 10px;
   padding: 1px 5px;
   border-radius: 4px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  color: var(--subtle);
+  background: #f4f4f5;
+  border: 1px solid #d4d4d8;
+  color: #3f3f46;
+}
+
+[data-theme="dark"] .nav-kbd {
+  background: #18181b;
+  border-color: #27272a;
+  color: #e4e4e7;
 }
 
 .nav-back {
@@ -492,7 +498,11 @@ textarea:focus-visible {
 .project-year {
   font-family: var(--font-family-mono);
   font-size: 11px;
-  color: var(--faint);
+  color: #4b5563;
+}
+
+[data-theme="dark"] .project-year {
+  color: #a1a1aa;
 }
 
 .project-title {
@@ -608,16 +618,28 @@ textarea:focus-visible {
   font-size: 10.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--subtle);
+  color: #374151;
   padding: 2px 8px;
   border-radius: 4px;
-  background: var(--card);
+  background: #f4f4f5;
+  border: 1px solid #e5e5e5;
   transition: all 160ms ease;
 }
 
 .project-item:hover .tag-mono {
-  color: var(--ink);
-  background: var(--card-hover);
+  color: #171717;
+  background: #ebebee;
+}
+
+[data-theme="dark"] .tag-mono {
+  color: #f4f4f5;
+  background: #27272a;
+  border-color: #3f3f46;
+}
+
+[data-theme="dark"] .project-item:hover .tag-mono {
+  color: #ffffff;
+  background: #3f3f46;
 }
 
 /* ========================================================
@@ -839,6 +861,7 @@ textarea:focus-visible {
   flex-shrink: 0;
 }
 
+.step-content h3,
 .step-content h4 {
   font-size: 13.5px;
   font-weight: 500;
@@ -860,6 +883,7 @@ textarea:focus-visible {
   margin: 20px 0;
 }
 
+.case-callout-clean h3,
 .case-callout-clean h4 {
   font-size: 13px;
   font-weight: 600;
@@ -1327,16 +1351,24 @@ textarea:focus-visible {
 .footer-clock {
   font-family: var(--font-family-mono);
   font-size: 11px;
-  color: var(--subtle);
+  color: #4b5563;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
+[data-theme="dark"] .footer-clock {
+  color: #a1a1aa;
+}
+
 .footer-clock-time {
   font-variant-numeric: tabular-nums;
-  color: var(--faint);
+  color: #4b5563;
+}
+
+[data-theme="dark"] .footer-clock-time {
+  color: #d4d4d8;
 }
 
 .copied-badge {

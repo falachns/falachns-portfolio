@@ -41,6 +41,7 @@ export interface Project {
   fullDescription: string;
   tags: string[];
   image: string;
+  imageAlt?: string;
   imageWidth: number;
   imageHeight: number;
   video?: string;
@@ -61,7 +62,8 @@ export const projects: Project[] = [
     slug: "qiscus-csat",
     eyebrow: "Qiscus Helpdesk · Omnichannel",
     title: "Elevating CSAT Survey Experience to Improve Agent Performance",
-    summary: "",
+    summary:
+      "Redesigning Qiscus Helpdesk CSAT survey builder for 20+ enterprise clients, balancing granular admin customization with a seamless 1-tap rating experience.",
     bullets: [
       "✦  Designed end-to-end survey creation for admin and end-user, adopted by 20+ enterprise clients.",
       "✦  Enabling agents to capture customer feedback and drive faster ticket resolution.",
@@ -71,6 +73,7 @@ export const projects: Project[] = [
     tags: ["Survey Builder", "Micro-Interaction", "Competitive Analysis"],
     image:
       "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=2048&width=2100&height=1575",
+    imageAlt: "Qiscus CSAT survey creation flow preview with live rating widgets and configuration builder",
     imageWidth: 2100,
     imageHeight: 1575,
     video: "https://framerusercontent.com/assets/bxbSVbhcIjyXFRwiHaqmOHvG9NE.mp4",
@@ -171,7 +174,8 @@ export const projects: Project[] = [
     slug: "customer-microsite",
     eyebrow: "E-Commerce · Merchant Conversion",
     title: "Redesigning Customer Microsite for Higher Merchant Conversion",
-    summary: "",
+    summary:
+      "Redesigning the Qiscus Shop customer microsite and modifier pattern to streamline variant selection and drive ~10% higher merchant order conversions.",
     bullets: [
       "✦  Contributing to ~10% increase in customer order sessions.",
       "✦  Improved microsite product pages allowing customers to view variants details clearly.",
@@ -181,6 +185,7 @@ export const projects: Project[] = [
     tags: ["E-commerce Dashboard", "Mobile Web App", "Design System"],
     image:
       "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?width=2048&height=1640",
+    imageAlt: "Qiscus Shop customer microsite product detail view with responsive modifier and variant selection options",
     imageWidth: 2048,
     imageHeight: 1640,
     video: "https://framerusercontent.com/assets/YwrEm1iK044p33dH6v1P9XpZ3c.mp4",
@@ -259,6 +264,7 @@ export const projects: Project[] = [
     tags: ["User Research", "UX Design", "Gamification", "Mobile App"],
     image:
       "https://framerusercontent.com/images/aG8oCyME0xjjkIeVE5X6cqHmas.png?width=1920&height=1000",
+    imageAlt: "Habitz children gamification habit-building mobile application interface screens on Android",
     imageWidth: 1920,
     imageHeight: 1000,
     tone: "neutral",
@@ -319,6 +325,7 @@ export const projects: Project[] = [
     tags: ["UI Designer", "Multiplatform", "Design System", "Art Commerce"],
     image:
       "https://framerusercontent.com/images/e1soJ6eYESGftMwI6x6GBpgDA0.png?width=1920&height=1000",
+    imageAlt: "Artverse trustworthy art commerce web experience with artwork authenticity and provenance verification",
     imageWidth: 1920,
     imageHeight: 1000,
     tone: "neutral",

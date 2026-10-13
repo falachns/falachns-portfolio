@@ -58,12 +58,12 @@ export default function Home() {
                   className="project-link"
                   aria-label={`View ${project.title} case study`}
                 >
-                  <h3 className="project-title">
+                  <h2 className="project-title text-base font-medium">
                     {project.title}
                     <span className="project-arrow" aria-hidden="true">
                       ↗
                     </span>
-                  </h3>
+                  </h2>
                 </Link>
 
                 {/* Media Container: AutoPlay Loop Muted Video with Graceful Image Fallback */}
@@ -77,7 +77,7 @@ export default function Home() {
                     <MediaViewer
                       src={project.video || project.image}
                       poster={project.videoPoster || project.image}
-                      alt={`${project.title} interface preview`}
+                      alt={project.imageAlt || `${project.title} interface preview`}
                       width={project.imageWidth}
                       height={project.imageHeight}
                       priority={idx === 0}

@@ -27,30 +27,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title = project.title;
+  const description =
+    project.summary || project.fullDescription.slice(0, 160);
+
   return {
-    title: `${project.title} — Falachns`,
-    description: project.summary,
+    title,
+    description,
     alternates: {
-      canonical: `/work/${project.slug}`,
+      canonical: `https://falachns.web.id/work/${project.slug}`,
     },
     openGraph: {
-      title: `${project.title} — Falachns`,
-      description: project.summary,
+      type: "article",
+      title: `${project.title} | Falach Noor Syahid`,
+      description,
       url: `https://falachns.web.id/work/${project.slug}`,
+      siteName: "Falach Noor Syahid",
       images: [
         {
           url: project.image,
           width: project.imageWidth,
           height: project.imageHeight,
-          alt: project.title,
+          alt: project.imageAlt || `${project.title} interface preview`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} — Falachns`,
-      description: project.summary,
+      title: `${project.title} | Falach Noor Syahid`,
+      description,
       images: [project.image],
+      creator: "@falachns",
+      site: "@falachns",
     },
   };
 }
@@ -108,7 +116,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <MediaViewer
               src={project.video || project.image}
               poster={project.videoPoster || project.image}
-              alt={`${project.title} cover preview`}
+              alt={project.imageAlt || `${project.title} cover preview`}
               width={project.imageWidth}
               height={project.imageHeight}
               priority
@@ -162,7 +170,7 @@ export default async function CaseStudyPage({ params }: Props) {
                       <div className="step-row" key={st.step}>
                         <span className="step-num">{st.step}</span>
                         <div className="step-content">
-                          <h4>{st.title}</h4>
+                          <h3>{st.title}</h3>
                           <p>{st.description}</p>
                         </div>
                       </div>
@@ -184,7 +192,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
                 {section.callout && (
                   <div className="case-callout-clean">
-                    <h4>{section.callout.title}</h4>
+                    <h3>{section.callout.title}</h3>
                     <p>{section.callout.text}</p>
                   </div>
                 )}
