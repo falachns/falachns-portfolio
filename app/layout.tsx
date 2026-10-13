@@ -1,22 +1,137 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Manrope, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-instrument",
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+export const viewport: Viewport = {
+  themeColor: "#FDFCFA",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://falachns.web.id"),
-  title: "Falachns, Product Designer",
-  description: "Building products into usable digital experiences.",
+  title: {
+    default: "Falachns, Product Designer",
+    template: "%s | Falachns, Product Designer",
+  },
+  description:
+    "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+  keywords: [
+    "Product Designer",
+    "UX Designer",
+    "UI Designer",
+    "Falach Noor Syahid",
+    "Falachns",
+    "Design System",
+    "SaaS Design",
+    "Qiscus",
+    "KAI",
+    "Portfolio",
+  ],
+  authors: [{ name: "Falach Noor Syahid", url: "https://falachns.web.id" }],
+  creator: "Falach Noor Syahid",
+  publisher: "Falach Noor Syahid",
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://falachns.web.id",
+    title: "Falachns, Product Designer",
+    description:
+      "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+    siteName: "Falachns Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Falachns, Product Designer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Falachns, Product Designer",
+    description:
+      "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+    images: ["/og-image.png"],
+    creator: "@falachns",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Falach Noor Syahid",
+    alternateName: "Falachns",
+    jobTitle: "Product Designer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Qiscus",
+    },
+    url: "https://falachns.web.id",
+    sameAs: [
+      "https://www.linkedin.com/in/falachnoorsyahid/",
+      "https://github.com/falachns",
+      "https://falachns.framer.website/",
+    ],
+  };
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${instrumentSerif.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://framerusercontent.com" />
-        <meta name="theme-color" content="#FDFCFA" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body>{children}</body>
+      <body className={manrope.className}>{children}</body>
     </html>
   );
 }

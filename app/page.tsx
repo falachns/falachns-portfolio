@@ -1,100 +1,200 @@
+import Link from "next/link";
+import Image from "next/image";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
-
-const projects = [
-  {
-    eyebrow: "Qiscus · Customer experience",
-    title: "Elevating CSAT survey experience for better agent performance.",
-    summary:
-      "A clearer end-to-end survey flow for admins and end-users, adopted by 20+ enterprise clients.",
-    tags: ["Survey Builder", "Micro-interaction", "Competitive Analysis"],
-    image:
-      "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=2048&width=2100&height=1575",
-    imageWidth: 2100,
-    imageHeight: 1575,
-    tone: "blue",
-  },
-  {
-    eyebrow: "Commerce · Conversion",
-    title: "Redesigning a customer microsite for higher merchant conversion.",
-    summary:
-      "Improving product detail clarity and contributing to an approximately 10% lift in customer order sessions.",
-    tags: ["E-commerce", "Mobile Web App", "Design System"],
-    image:
-      "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?width=2048&height=1640",
-    imageWidth: 2048,
-    imageHeight: 1640,
-    tone: "sand",
-  },
-];
+import { getAllProjects } from "@/data/projects";
+import GreetingHero from "@/components/GreetingHero";
+import LiveClock from "@/components/LiveClock";
+import EmailCopy from "@/components/EmailCopy";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
+  const projects = getAllProjects();
+
   return (
-    <main id="main-content">
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      <header className="site-header wrap">
-        <a className="wordmark" href="#top" aria-label="Back to top">
-          Falachns
-        </a>
+    <main id="main-content" className="site-wrapper">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+
+      {/* Navigation Header */}
+      <header className="site-header wrap" id="top">
+        <Link className="wordmark" href="/" aria-label="Falachns home">
+          falachns
+        </Link>
         <nav className="site-nav" aria-label="Main navigation">
-          <a href="https://falachns.framer.website/playground" target="_blank" rel="noreferrer">Playground</a>
-          <a href="/ask-falach">Ask FalachLLM</a>
+          <Link href="/playground" className="nav-link">
+            Playground
+          </Link>
+          <Link href="/explorations" className="nav-link">
+            Explorations
+          </Link>
+          <Link href="/ask-falach" className="nav-link nav-highlight">
+            Ask FalachLLM
+          </Link>
         </nav>
       </header>
 
-      <section className="hero wrap" id="top" aria-labelledby="intro-title">
-        <div className="hero-intro">
-          <p className="hero-name">Falach</p>
-          <h1 id="intro-title">Good day! I&apos;m Falach, Product Designer building products into usable digital experiences.</h1>
-        </div>
+      {/* Hero Section */}
+      <section className="hero wrap" aria-labelledby="intro-title">
+        <GreetingHero />
         <div className="hero-foot">
-          <p>Currently helping businesses stay connected with their customers at <strong>Qiscus</strong>.</p>
-          <p className="clock">Indonesia, UTC+7</p>
+          <p className="hero-focus-tag">
+            Crafting for every single pixel.
+          </p>
+          <LiveClock />
         </div>
       </section>
 
-      <section className="work wrap" id="work">
+      {/* Selected Work Section */}
+      <section className="work wrap" id="work" aria-label="Selected case studies">
+        <div className="section-label-bar">
+          <span className="section-label">Selected Work</span>
+          <span className="section-sublabel">2023 — Present</span>
+        </div>
+
         <div className="project-list">
-          {projects.map((project) => (
-              <article className={`project project-${project.tone}`} key={project.eyebrow}>
-              <a href="#contact" className="project-link" aria-label={`View ${project.title}`}>
+          {projects.map((project, index) => (
+            <article
+              className={`project project-${project.tone}`}
+              key={project.slug}
+            >
+              <Link
+                href={`/work/${project.slug}`}
+                className="project-link"
+                aria-label={`View ${project.title} case study`}
+              >
                 <div className="project-media">
-                  <img src={project.image} alt={`${project.title} interface preview`} width={project.imageWidth} height={project.imageHeight} loading="lazy" decoding="async" />
-                  <span className="project-view">View case study <HugeiconsIcon icon={ArrowUpRight01Icon} size={13} strokeWidth={1.7} aria-hidden="true" /></span>
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} interface preview`}
+                    width={project.imageWidth}
+                    height={project.imageHeight}
+                    priority={index === 0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 70vw, 900px"
+                    className="project-image"
+                  />
+                  <span className="project-view">
+                    View case study{" "}
+                    <HugeiconsIcon
+                      icon={ArrowUpRight01Icon}
+                      size={13}
+                      strokeWidth={1.8}
+                      aria-hidden="true"
+                    />
+                  </span>
                 </div>
+
                 <div className="project-info">
-                  <div className="project-index"><span>{project.eyebrow}</span></div>
-                  <h2>{project.title}</h2>
-                  <p>{project.summary}</p>
-                  <ul aria-label="Project focus areas">
-                    {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                  <div className="project-index">
+                    <span className="project-eyebrow">{project.eyebrow}</span>
+                  </div>
+                  <h2 className="project-title">{project.title}</h2>
+
+                  {project.bullets && project.bullets.length > 0 ? (
+                    <ul className="project-bullets" aria-label="Key accomplishments">
+                      {project.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="project-summary">{project.summary}</p>
+                  )}
+
+                  <ul className="project-tags" aria-label="Project domains">
+                    {project.tags.map((tag) => (
+                      <li key={tag} className="tag-pill">
+                        {tag}
+                      </li>
+                    ))}
                   </ul>
                 </div>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="notes wrap">
-        <div className="notes-grid">
+      {/* Explorations & Playground quick links */}
+      <section className="notes wrap" aria-label="Explorations and experiments">
+        <div className="notes-card">
+          <div className="notes-content">
+            <span className="notes-tag">Labs & Playground</span>
+            <h3>Curious explorations & side-quests</h3>
+            <p>
+              Interactive experiments, Pomodoro timer utilities, design challenge archives, and visual play.
+            </p>
+          </div>
           <div className="note-links">
-            <a href="https://falachns.framer.website/explorations" target="_blank" rel="noreferrer">Explorations <HugeiconsIcon icon={ArrowUpRight01Icon} size={15} strokeWidth={1.6} aria-hidden="true" /></a>
+            <Link href="/explorations" className="note-pill">
+              Explorations{" "}
+              <HugeiconsIcon
+                icon={ArrowUpRight01Icon}
+                size={14}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
+            </Link>
+            <Link href="/playground" className="note-pill">
+              Playground{" "}
+              <HugeiconsIcon
+                icon={ArrowUpRight01Icon}
+                size={14}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
+            </Link>
           </div>
         </div>
       </section>
 
-      <footer className="footer wrap" id="contact">
+      {/* Footer */}
+      <footer className="footer wrap" id="contact" aria-label="Site footer">
+        <div className="footer-status-row">
+          <LiveClock />
+          <BackToTop />
+        </div>
+
+        <div className="footer-thanks">
+          <p className="thanks-text">Thanks for checking it out!</p>
+        </div>
+
         <div className="contact-row">
-          <a className="email" href="mailto:falachns10@gmail.com">
-            falachns10@gmail.com <HugeiconsIcon icon={ArrowUpRight01Icon} size={27} strokeWidth={1.5} aria-hidden="true" />
-          </a>
+          <EmailCopy email="falachns10@gmail.com" />
+
           <div className="socials">
-            <a href="https://www.linkedin.com/in/falachnoorsyahid/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://github.com/falachns" target="_blank" rel="noreferrer">GitHub</a>
+            <a
+              href="https://www.linkedin.com/in/falachnoorsyahid/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+              aria-label="LinkedIn profile"
+            >
+              <span>Linkedin</span>
+              <span className="social-sub">Connect</span>
+            </a>
+            <a
+              href="https://github.com/falachns"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+              aria-label="GitHub profile"
+            >
+              <span>GitHub</span>
+              <span className="social-sub">Shots ➜</span>
+            </a>
           </div>
         </div>
-        <p className="copyright">© {new Date().getFullYear()} Falach Noor Syahid</p>
+
+        <div className="footer-bottom">
+          <p className="copyright">
+            © {new Date().getFullYear()} Falach Noor Syahid. Crafted with care.
+          </p>
+          <div className="footer-badge">
+            <span className="dot" aria-hidden="true" />
+            <span>falachns.web.id</span>
+          </div>
+        </div>
       </footer>
     </main>
   );
