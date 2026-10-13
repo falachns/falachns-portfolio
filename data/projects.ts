@@ -18,6 +18,9 @@ export interface CaseStudySection {
   bulletPoints?: string[];
   image?: string;
   imageCaption?: string;
+  video?: string;
+  videoPoster?: string;
+  videoCaption?: string;
   callout?: {
     title: string;
     text: string;
@@ -40,7 +43,9 @@ export interface Project {
   image: string;
   imageWidth: number;
   imageHeight: number;
-  tone: "blue" | "sand" | "green" | "purple";
+  video?: string;
+  videoPoster?: string;
+  tone?: "neutral";
   featured: boolean;
   metrics: MetricItem[];
   meta: ProjectMeta;
@@ -69,7 +74,9 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=2048&width=2100&height=1575",
     imageWidth: 2100,
     imageHeight: 1575,
-    tone: "blue",
+    video: "https://framerusercontent.com/assets/bxbSVbhcIjyXFRwiHaqmOHvG9NE.mp4",
+    videoPoster: "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png",
+    tone: "neutral",
     featured: true,
     metrics: [
       { value: "20+", label: "Enterprise Clients Adopted" },
@@ -141,6 +148,8 @@ export const projects: Project[] = [
           "Every enterprise client has strict brand guidelines. The live preview editor enables support managers to match company color tokens, custom logos, and greeting copy seamlessly.",
           "For end-users, the submission interface is stripped of all redundant UI elements. It renders instantly on both mobile browsers and in-chat webviews, making submission a 1-tap interaction.",
         ],
+        video: "https://framerusercontent.com/assets/h6jsbfKO7soS1XU5TnMnDyZq9ZU.mp4",
+        videoCaption: "Live brand preview panel reflecting client color tokens and logos in real-time.",
         callout: {
           title: "Design Detail: Micro-Interactions",
           text: "Selected rating states trigger subtle haptic-like spring transitions and instant score confirmations, giving respondents visual clarity that their feedback was registered.",
@@ -176,7 +185,9 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?width=2048&height=1640",
     imageWidth: 2048,
     imageHeight: 1640,
-    tone: "sand",
+    video: "https://framerusercontent.com/assets/YwrEm1iK044p33dH6v1P9XpZ3c.mp4",
+    videoPoster: "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png",
+    tone: "neutral",
     featured: true,
     metrics: [
       { value: "~10%", label: "Lift in Order Sessions" },
@@ -252,7 +263,7 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/aG8oCyME0xjjkIeVE5X6cqHmas.png?width=1920&height=1000",
     imageWidth: 1920,
     imageHeight: 1000,
-    tone: "green",
+    tone: "neutral",
     featured: false,
     metrics: [
       { value: "550+", label: "App Downloads on Google Play" },
@@ -312,7 +323,7 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/e1soJ6eYESGftMwI6x6GBpgDA0.png?width=1920&height=1000",
     imageWidth: 1920,
     imageHeight: 1000,
-    tone: "purple",
+    tone: "neutral",
     featured: false,
     metrics: [
       { value: "35+", label: "Artists & Collectors Surveyed" },

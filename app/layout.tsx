@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Instrument_Serif } from "next/font/google";
+import AskFalachDrawer from "@/components/AskFalachDrawer";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -18,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#FDFCFA",
+  themeColor: "#fafafa",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -27,11 +28,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://falachns.web.id"),
   title: {
-    default: "Falachns, Product Designer",
-    template: "%s | Falachns, Product Designer",
+    default: "Falachns — Product Designer",
+    template: "%s | Falachns — Product Designer",
   },
   description:
-    "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+    "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
   keywords: [
     "Product Designer",
     "UX Designer",
@@ -61,24 +62,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://falachns.web.id",
-    title: "Falachns, Product Designer",
+    title: "Falachns — Product Designer",
     description:
-      "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+      "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
     siteName: "Falachns Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Falachns, Product Designer",
+        alt: "Falachns — Product Designer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Falachns, Product Designer",
+    title: "Falachns — Product Designer",
     description:
-      "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+      "Product Designer building software into usable, meaningful digital experiences. Currently designing railway platform ecosystems at PT KAI (Persero).",
     images: ["/og-image.png"],
     creator: "@falachns",
   },
@@ -106,7 +107,7 @@ export default function RootLayout({
     jobTitle: "Product Designer",
     worksFor: {
       "@type": "Organization",
-      name: "Qiscus",
+      name: "PT KAI (Persero)",
     },
     url: "https://falachns.web.id",
     sameAs: [
@@ -131,7 +132,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={manrope.className}>{children}</body>
+      <body className={manrope.className}>
+        {children}
+        <AskFalachDrawer />
+      </body>
     </html>
   );
 }

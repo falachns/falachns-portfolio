@@ -44,59 +44,53 @@ export default function PomodoroWidget() {
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
   return (
-    <div className="pomodoro-widget" aria-label="Interactive Focus Pomodoro Timer">
-      <div className="pomodoro-tabs">
+    <div className="pomo-clean-widget" aria-label="Interactive Focus Pomodoro Timer">
+      <div className="pomo-clean-tabs">
         <button
           type="button"
-          className={`pomo-tab ${mode === "focus" ? "active" : ""}`}
+          className={`pomo-clean-tab ${mode === "focus" ? "active" : ""}`}
           onClick={() => switchMode("focus")}
         >
           Focus (25m)
         </button>
         <button
           type="button"
-          className={`pomo-tab ${mode === "short" ? "active" : ""}`}
+          className={`pomo-clean-tab ${mode === "short" ? "active" : ""}`}
           onClick={() => switchMode("short")}
         >
-          Short Break (5m)
+          Short (5m)
         </button>
         <button
           type="button"
-          className={`pomo-tab ${mode === "long" ? "active" : ""}`}
+          className={`pomo-clean-tab ${mode === "long" ? "active" : ""}`}
           onClick={() => switchMode("long")}
         >
-          Long Break (15m)
+          Long (15m)
         </button>
       </div>
 
-      <div className="pomodoro-display">
-        <div className="timer-badge">
-          <HugeiconsIcon icon={TimeQuarterPassIcon} size={15} strokeWidth={2} aria-hidden="true" />
-          <span>{mode === "focus" ? "Stay in the flow" : "Recharge"}</span>
-        </div>
-        <div className="timer-time" role="timer" aria-live="off">
-          {formattedTime}
-        </div>
+      <div className="pomo-clean-display" role="timer" aria-live="off">
+        {formattedTime}
       </div>
 
-      <div className="pomodoro-controls">
+      <div className="pomo-clean-actions">
         <button
           type="button"
           onClick={toggleRun}
-          className={`pomo-btn pomo-primary ${isRunning ? "running" : ""}`}
+          className="pomo-btn-clean"
           aria-label={isRunning ? "Pause timer" : "Start timer"}
         >
-          <HugeiconsIcon icon={isRunning ? PauseIcon : PlayIcon} size={16} strokeWidth={2} aria-hidden="true" />
-          <span>{isRunning ? "Pause" : "Start Focus"}</span>
+          <HugeiconsIcon icon={isRunning ? PauseIcon : PlayIcon} size={14} strokeWidth={2} aria-hidden="true" className="inline mr-1.5 align-middle" />
+          <span>{isRunning ? "Pause" : "Start"}</span>
         </button>
 
         <button
           type="button"
           onClick={resetTimer}
-          className="pomo-btn pomo-secondary"
+          className="pomo-btn-clean btn-secondary"
           aria-label="Reset timer"
         >
-          <HugeiconsIcon icon={RefreshIcon} size={16} strokeWidth={2} aria-hidden="true" />
+          <HugeiconsIcon icon={RefreshIcon} size={14} strokeWidth={2} aria-hidden="true" className="inline mr-1.5 align-middle" />
           <span>Reset</span>
         </button>
       </div>

@@ -1,11 +1,11 @@
 {
-  "name": "Falachns, Product Designer",
+  "name": "Falachns — Product Designer",
   "short_name": "Falachns",
-  "description": "✧ Good day! I’m Falach, junior product designer. Crafting for every single pixel.",
+  "description": "Product Designer building digital products into usable, meaningful experiences.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FDFCFA",
-  "theme_color": "#FDFCFA",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa",
   "icons": [
     {
       "src": "/favicon.png",
