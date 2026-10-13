@@ -212,15 +212,12 @@ export default function AskFalachPageView() {
             {/* Input Bar Area Docked with Suggested Prompts & Disclaimer */}
             <div className="pt-4 border-t border-[var(--line)] mt-4">
               {messages.length === 0 && (
-                <div
-                  className="flex flex-col gap-2 w-full mb-3"
-                  aria-label="Suggested prompts"
-                >
+                <div className="drawer-prompts-bar" aria-label="Suggested prompts">
                   {PRESET_PROMPTS.map((prompt) => (
                     <button
                       key={prompt}
                       type="button"
-                      className="w-full text-left py-2.5 px-3.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-800 rounded-xl bg-[var(--page)] hover:border-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                      className="drawer-prompt-card"
                       onClick={() => handleSend(prompt)}
                     >
                       {prompt}
@@ -234,7 +231,7 @@ export default function AskFalachPageView() {
                   e.preventDefault();
                   handleSend();
                 }}
-                className="flex items-center gap-2 border border-[var(--line)] rounded-lg px-3 py-2 bg-[var(--page)] focus-within:border-[var(--ink)] transition-colors"
+                className="drawer-input-form"
               >
                 <input
                   ref={inputRef}
@@ -242,7 +239,7 @@ export default function AskFalachPageView() {
                   placeholder="Ask about design projects, metrics, or philosophy..."
                   value={inputQuery}
                   onChange={(e) => setInputQuery(e.target.value)}
-                  className="flex-1 text-sm bg-transparent border-0 outline-none text-[var(--ink)] placeholder:text-[var(--faint)] focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+                  className="drawer-input"
                   aria-label="Ask a question about Falach"
                 />
                 <button
@@ -260,7 +257,7 @@ export default function AskFalachPageView() {
                 </button>
               </form>
 
-              <p className="text-[11px] text-neutral-400 dark:text-neutral-500 text-center mt-2.5 tracking-normal m-0 whitespace-nowrap overflow-hidden text-ellipsis">
+              <p className="drawer-disclaimer">
                 FalachLLM can make mistakes · Reach out:{" "}
                 <a
                   href="mailto:falachns10@gmail.com"

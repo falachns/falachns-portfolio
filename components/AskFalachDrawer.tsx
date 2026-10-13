@@ -324,15 +324,12 @@ export default function AskFalachDrawer() {
         <div className="drawer-footer">
           {/* Suggested Prompts stacked cards docked right above input field (hidden once chat starts) */}
           {messages.length === 0 && (
-            <div
-              className="flex flex-col gap-2 w-full mb-3"
-              aria-label="Suggested prompts"
-            >
+            <div className="drawer-prompts-bar" aria-label="Suggested prompts">
               {PRESET_PROMPTS.map((prompt) => (
                 <button
                   key={prompt}
                   type="button"
-                  className="w-full text-left py-2.5 px-3.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-800 rounded-xl bg-[var(--card)] hover:border-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                  className="drawer-prompt-card"
                   onClick={() => handleSend(prompt)}
                 >
                   {prompt}
