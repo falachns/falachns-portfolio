@@ -20,8 +20,14 @@ export function openAskDrawer() {
   }
 }
 
-export default function AskFalachDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
+interface AskFalachDrawerProps {
+  initialOpen?: boolean;
+}
+
+export default function AskFalachDrawer({
+  initialOpen = false,
+}: AskFalachDrawerProps) {
+  const [isOpen, setIsOpen] = useState(initialOpen);
   const [messages, setMessages] = useState<LLMMessage[]>([]);
   const [inputQuery, setInputQuery] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -39,6 +45,17 @@ export default function AskFalachDrawer() {
       previouslyFocusedElementRef.current.focus();
     }
   };
+
+  useEffect(() => {
+    if (initialOpen) {
+      previouslyFocusedElementRef.current =
+        document.activeElement as HTMLElement | null;
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [initialOpen]);
 
   useEffect(() => {
     const handleOpen = () => {
@@ -97,7 +114,9 @@ export default function AskFalachDrawer() {
   // Auto-scroll to bottom whenever messages or typing state change
   useEffect(() => {
     if (messages.length > 0 || isTyping) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      });
     }
   }, [messages, isTyping]);
 

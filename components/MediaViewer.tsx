@@ -60,26 +60,32 @@ export default function MediaViewer({
         if (!entry) return;
 
         if (entry.isIntersecting) {
-          setShouldLoad(true);
-          const v = videoRef.current;
-          if (v) {
-            if (!v.src && activeVideo) {
-              v.src = activeVideo;
+          requestAnimationFrame(() => {
+            setShouldLoad(true);
+            const v = videoRef.current;
+            if (v) {
+              if (!v.src && activeVideo) {
+                v.src = activeVideo;
+              }
+              const playPromise = v.play();
+              if (playPromise !== undefined) {
+                playPromise
+                  .then(() => {
+                    requestAnimationFrame(() => setIsPlaying(true));
+                  })
+                  .catch(() => {
+                    // Autoplay policy or interrupted
+                  });
+              }
             }
-            const playPromise = v.play();
-            if (playPromise !== undefined) {
-              playPromise
-                .then(() => setIsPlaying(true))
-                .catch(() => {
-                  // Autoplay policy or interrupted
-                });
-            }
-          }
+          });
         } else {
-          const v = videoRef.current;
-          if (v && !v.paused) {
-            v.pause();
-          }
+          requestAnimationFrame(() => {
+            const v = videoRef.current;
+            if (v && !v.paused) {
+              v.pause();
+            }
+          });
         }
       },
       {
@@ -110,11 +116,13 @@ export default function MediaViewer({
               fill
               priority={priority}
               quality={80}
+              unoptimized={priority}
               sizes="(max-width: 768px) 100vw, 680px"
               className={`object-cover transition-opacity duration-300 ${
                 isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
               onError={() => setImageError(true)}
+              {...(priority ? { fetchPriority: "high" as any } : {})}
             />
           )}
 
@@ -129,6 +137,7 @@ export default function MediaViewer({
             className="w-full h-full object-cover project-video"
             style={{ aspectRatio }}
             onPlaying={() => setIsPlaying(true)}
+            {...(priority ? { fetchPriority: "high" as any } : {})}
             onError={() => {
               console.warn(
                 `Video failed to load: ${activeVideo}, falling back to poster image`

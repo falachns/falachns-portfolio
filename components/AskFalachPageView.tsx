@@ -25,7 +25,9 @@ export default function AskFalachPageView() {
 
   useEffect(() => {
     if (messages.length > 0 || isTyping) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      });
     }
   }, [messages, isTyping]);
 

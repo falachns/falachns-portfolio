@@ -18,9 +18,16 @@ export default function LiveClock() {
       setTimeString(formatted);
     };
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
+    const rafUpdate = () => {
+      requestAnimationFrame(updateTime);
+    };
+
+    const handle = requestAnimationFrame(updateTime);
+    const interval = setInterval(rafUpdate, 1000);
+    return () => {
+      cancelAnimationFrame(handle);
+      clearInterval(interval);
+    };
   }, []);
 
   return (

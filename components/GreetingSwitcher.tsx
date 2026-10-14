@@ -9,7 +9,9 @@ export default function GreetingSwitcher() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % GREETINGS.length);
+      requestAnimationFrame(() => {
+        setIndex((prev) => (prev + 1) % GREETINGS.length);
+      });
     }, 2600);
     return () => clearInterval(interval);
   }, []);

@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { openAskDrawer } from "./AskFalachDrawer";
 
 export default function Header() {
   const pathname = usePathname();
+
+  const handleOpenAskDrawer = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-ask-falach"));
+    }
+  };
 
   return (
     <header className="site-header wrap" id="top">
@@ -30,7 +35,7 @@ export default function Header() {
         </Link>
         <button
           type="button"
-          onClick={openAskDrawer}
+          onClick={handleOpenAskDrawer}
           className="nav-ai-btn"
           aria-label="Open Ask FalachLLM assistant drawer"
         >

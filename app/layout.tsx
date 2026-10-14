@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
-import AskFalachDrawer from "@/components/AskFalachDrawer";
+import AskFalachDrawerWrapper from "@/components/AskFalachDrawerWrapper";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -120,6 +120,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://framerusercontent.com" />
         <link rel="dns-prefetch" href="https://framerusercontent.com" />
+        <link
+          rel="preload"
+          as="image"
+          href="https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=1024"
+          {...{ fetchPriority: "high" }}
+          type="image/webp"
+        />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <script
@@ -134,7 +141,7 @@ export default function RootLayout({
       </head>
       <body className={manrope.className}>
         {children}
-        <AskFalachDrawer />
+        <AskFalachDrawerWrapper />
       </body>
     </html>
   );
