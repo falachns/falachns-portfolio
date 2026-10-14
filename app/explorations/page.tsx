@@ -167,7 +167,7 @@ export default function ExplorationsPage() {
                           loop
                           muted
                           playsInline
-                          preload="metadata"
+                          preload="none"
                           className="block w-full h-auto aspect-[16/10] object-cover"
                           style={{ display: "block", width: "100%", height: "auto" }}
                         />
@@ -190,7 +190,7 @@ export default function ExplorationsPage() {
                         loop
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         className="block w-full h-auto object-cover"
                         style={{ display: "block", width: "100%", height: "auto" }}
                       />
@@ -207,7 +207,8 @@ export default function ExplorationsPage() {
                       alt={item.alt}
                       width={item.width}
                       height={item.height}
-                      sizes="(max-width: 680px) 100vw, 680px"
+                      quality={80}
+                      sizes="(max-width: 768px) 100vw, 680px"
                       className="block w-full h-auto object-cover"
                       style={{ display: "block", width: "100%", height: "auto" }}
                     />

@@ -72,12 +72,12 @@ export const projects: Project[] = [
       "Qiscus Helpdesk is an omnichannel ticketing system that empowers customer support teams to manage, prioritize, and resolve inquiries at scale. As enterprise adoption expanded, measuring agent performance with actionable, real-time feedback became a vital requirement. I redesigned the end-to-end survey builder experience to balance deep customization for admins with frictionless completion for end customers.",
     tags: ["Survey Builder", "Micro-Interaction", "Competitive Analysis"],
     image:
-      "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=2048&width=2100&height=1575",
+      "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=1024",
     imageAlt: "Qiscus CSAT survey creation flow preview with live rating widgets and configuration builder",
     imageWidth: 2100,
     imageHeight: 1575,
     video: "https://framerusercontent.com/assets/bxbSVbhcIjyXFRwiHaqmOHvG9NE.mp4",
-    videoPoster: "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png",
+    videoPoster: "https://framerusercontent.com/images/7yUAmetmI8toA1NRXVLoFyq7O24.png?scale-down-to=1024",
     tone: "neutral",
     featured: true,
     metrics: [
@@ -184,12 +184,12 @@ export const projects: Project[] = [
       "For independent merchants and multi-outlet retail brands, their mobile customer microsite is the digital front door for direct-to-consumer orders. By auditing drop-off friction points, clarifying variant selection mechanics, and streamlining product detail pages, this redesign directly boosted customer order session conversions by approximately 10%.",
     tags: ["E-commerce Dashboard", "Mobile Web App", "Design System"],
     image:
-      "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?width=2048&height=1640",
+      "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?scale-down-to=1024",
     imageAlt: "Qiscus Shop customer microsite product detail view with responsive modifier and variant selection options",
     imageWidth: 2048,
     imageHeight: 1640,
     video: "https://framerusercontent.com/assets/YwrEm1iK044p33dH6v1P9XpZ3c.mp4",
-    videoPoster: "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png",
+    videoPoster: "https://framerusercontent.com/images/KyirwtP3wo9c3ntxA5k7KiafSHE.png?scale-down-to=1024",
     tone: "neutral",
     featured: true,
     metrics: [
@@ -263,7 +263,7 @@ export const projects: Project[] = [
       "Habitz is a mobile application incubated under UNS Innovation Hub designed to empower positive daily habits for children through gamification mechanics. By interviewing 140+ parents and collaborating closely with front-end engineers, we crafted an engaging, child-friendly journey that turns everyday routines into rewarding quests.",
     tags: ["User Research", "UX Design", "Gamification", "Mobile App"],
     image:
-      "https://framerusercontent.com/images/aG8oCyME0xjjkIeVE5X6cqHmas.png?width=1920&height=1000",
+      "https://framerusercontent.com/images/aG8oCyME0xjjkIeVE5X6cqHmas.png?scale-down-to=1024",
     imageAlt: "Habitz children gamification habit-building mobile application interface screens on Android",
     imageWidth: 1920,
     imageHeight: 1000,
@@ -324,7 +324,7 @@ export const projects: Project[] = [
       "Artverse addresses one of the most critical challenges in the Indonesian art ecosystem: forgery and lack of transparency. Working directly with Head of Product Benediktus Sumarso at AssetFindr, I designed a multiplatform commerce experience that pairs artistic elegance with robust provenance verification.",
     tags: ["UI Designer", "Multiplatform", "Design System", "Art Commerce"],
     image:
-      "https://framerusercontent.com/images/e1soJ6eYESGftMwI6x6GBpgDA0.png?width=1920&height=1000",
+      "https://framerusercontent.com/images/e1soJ6eYESGftMwI6x6GBpgDA0.png?scale-down-to=1024",
     imageAlt: "Artverse trustworthy art commerce web experience with artwork authenticity and provenance verification",
     imageWidth: 1920,
     imageHeight: 1000,

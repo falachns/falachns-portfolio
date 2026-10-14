@@ -207,6 +207,7 @@ export default function AskFalachDrawer() {
         className={`drawer-panel ${isOpen ? "open" : ""}`}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!isOpen}
         aria-labelledby="drawer-heading"
         aria-describedby="drawer-subheading"
       >

@@ -6,6 +6,7 @@ import "./globals.css";
 const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
+  preload: true,
   variable: "--font-manrope",
 });
 
@@ -118,6 +119,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="preconnect" href="https://framerusercontent.com" />
+        <link rel="dns-prefetch" href="https://framerusercontent.com" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <script

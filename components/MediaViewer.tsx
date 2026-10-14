@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface MediaViewerProps {
@@ -32,30 +32,111 @@ export default function MediaViewer({
   className = "",
   priority = false,
 }: MediaViewerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const [videoError, setVideoError] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const activeVideo = video || (src && (src.endsWith(".mp4") || src.endsWith(".webm") || src.includes(".mp4")) ? src : undefined);
-  const displayImage = videoPoster || poster || image || (!activeVideo ? src : undefined);
+  const activeVideo =
+    video ||
+    (src && (src.endsWith(".mp4") || src.endsWith(".webm") || src.includes(".mp4"))
+      ? src
+      : undefined);
+  const displayImage =
+    videoPoster || poster || image || (!activeVideo ? src : undefined);
+
+  useEffect(() => {
+    if (!activeVideo || videoError) return;
+
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          const v = videoRef.current;
+          if (v) {
+            if (!v.src && activeVideo) {
+              v.src = activeVideo;
+            }
+            const playPromise = v.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => setIsPlaying(true))
+                .catch(() => {
+                  // Autoplay policy or interrupted
+                });
+            }
+          }
+        } else {
+          const v = videoRef.current;
+          if (v && !v.paused) {
+            v.pause();
+          }
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [activeVideo, videoError]);
 
   return (
     <figure className={`media-container ${className}`}>
       {activeVideo && !videoError ? (
-        <video
-          src={activeVideo}
-          poster={displayImage}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="w-full h-auto rounded-lg object-cover project-video"
+        <div
+          ref={containerRef}
+          className="relative w-full overflow-hidden rounded-lg"
           style={{ aspectRatio }}
-          onError={() => {
-            console.warn(`Video failed to load: ${activeVideo}, falling back to poster image`);
-            setVideoError(true);
-          }}
-        />
+        >
+          {/* High-fidelity Next.js optimized WebP/AVIF poster */}
+          {displayImage && !imageError && (
+            <Image
+              src={displayImage}
+              alt={alt}
+              fill
+              priority={priority}
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 680px"
+              className={`object-cover transition-opacity duration-300 ${
+                isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+              onError={() => setImageError(true)}
+            />
+          )}
+
+          <video
+            ref={videoRef}
+            src={shouldLoad ? activeVideo : undefined}
+            poster={displayImage}
+            loop
+            muted
+            playsInline
+            preload="none"
+            className="w-full h-full object-cover project-video"
+            style={{ aspectRatio }}
+            onPlaying={() => setIsPlaying(true)}
+            onError={() => {
+              console.warn(
+                `Video failed to load: ${activeVideo}, falling back to poster image`
+              );
+              setVideoError(true);
+            }}
+          />
+        </div>
       ) : displayImage && !imageError ? (
         <Image
           src={displayImage}
@@ -63,7 +144,8 @@ export default function MediaViewer({
           width={width}
           height={height}
           priority={priority}
-          sizes="(max-width: 720px) 100vw, 680px"
+          quality={80}
+          sizes="(max-width: 768px) 100vw, 680px"
           className="project-img"
           onError={() => {
             console.warn(`Image failed to load: ${displayImage}`);
